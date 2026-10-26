@@ -66,3 +66,6 @@
 - [x] Remix import: re-uploaded all 128 site images (verified all load); store/employee data already present.
 - [x] Super Admin account created for owner email; password sign-in verified; admin panel opens with Super Admin badge.
 - [x] Summit 2026 mobile review: no overflow; form responsive; fixed see-through sticky header overlapping content on funding pages.
+- [x] Hide whole Global Presence section (footer Global Markets column, nav link, /global-presence page, 8 country pages, sitemap entries, home/about/manufacturers/scale links) from live site via GLOBAL_PRESENCE_LIVE=false in src/frontend/lib/hidden-pages.ts; still visible in preview; 49 tests pass; browser-verified no remaining links.
+- [x] Confirmed all 155 media-library images are valid optimized WebP (0 corrupt); already synced to git repo.
+- [ ] Publish only after user confirms all pages complete (per user instruction).

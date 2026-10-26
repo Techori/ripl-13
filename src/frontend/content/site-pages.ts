@@ -5,7 +5,6 @@ export const publicPages = [
   { path: "/about", label: "About Us" },
   { path: "/our-services", label: "Our Services" },
   { path: "/business-valuation-calculator", label: "Business Valuation Calculator" },
-  { path: "/global-presence", label: "Global Presence" },
   { path: "/partner-with-us", label: "Partner With Us" },
   { path: "/manufacturers", label: "For Manufacturers" },
   { path: "/retailer-partner", label: "Retail Partner" },

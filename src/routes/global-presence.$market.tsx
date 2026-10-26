@@ -9,8 +9,9 @@ import { SingaporeMarketPage } from "@/frontend/features/market/singapore-sectio
 import { UaeMarketPage } from "@/frontend/features/market/uae-sections";
 import { UkMarketPage } from "@/frontend/features/market/uk-sections";
 import { EuropeMarketPage } from "@/frontend/features/market/europe-sections";
+import { lockGlobalPresence } from "@/frontend/lib/hidden-pages";
 export const Route=createFileRoute("/global-presence/$market")({
- loader:({params})=>{const profile=marketProfiles[params.market];if(!profile) throw notFound();return profile;},
+ loader:({params})=>{lockGlobalPresence();const profile=marketProfiles[params.market];if(!profile) throw notFound();return profile;},
  head:({loaderData,params})=>{const name=loaderData?.name??"Market";const marketName=name==="India"?"India":`India–${name}`;return {links:[{rel:"canonical",href:`/global-presence/${params.market}`}],meta:[{title:`${marketName} FMCG Trade Support — Rishishwar Industry`},{name:"description",content:`Explore ${marketName} FMCG trade opportunities, market requirements and Rishishwar Industry support.`},{property:"og:title",content:`${marketName} Market Opportunities`},{property:"og:description",content:name==="India"?"FMCG retail access and market-entry support across India.":`FMCG trade opportunities and practical market-entry support between India and ${name}.`},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]};},
  component:Page,
 });

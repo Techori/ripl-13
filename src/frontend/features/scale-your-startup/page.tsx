@@ -18,7 +18,6 @@ const services = [
   { icon: Target, title: "Strategy & Positioning", text: "Refine your business model, market positioning and go-to-market strategy.", to: "/startup-with-ripl" },
   { icon: Coins, title: "Funding & Capital", text: "Connect with the right investors and funding opportunities at every stage.", to: "/fund-your-startup" },
   { icon: ChartNoAxesCombined, title: "Sales & Revenue Growth", text: "Build strong sales systems, channel partners and market penetration strategies.", to: "/our-services" },
-  { icon: Globe2, title: "Market Expansion", text: "Access new cities, states and international markets through our network.", to: "/global-presence" },
   { icon: Settings, title: "Technology & Transformation", text: "Leverage technology, automation and digital tools to scale efficiently.", to: "/contact" },
   { icon: Users, title: "Mentorship & Leadership", text: "Get guidance from experienced entrepreneurs, industry experts and business mentors.", to: "/our-mentors" },
 ] as const;
