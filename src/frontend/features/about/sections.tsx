@@ -304,12 +304,6 @@ export function GlobalMindset() {
             manufacturers expand beyond borders with reliable market access
             and long-term partnerships.
           </p>
-          <Link
-            to="/global-presence"
-            className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            View Global Presence <ArrowRight className="size-4" />
-          </Link>
         </div>
       </div>
     </section>

@@ -13,14 +13,12 @@ const footerLogo = { url: footerLogoSrc };
 import { isSeasonal, useSiteTheme } from "@/frontend/lib/site-theme";
 import { Button } from "@/frontend/components/ui/button";
 import { COMPANY } from "@/frontend/content/company";
-import { countries } from "@/frontend/features/global-presence/content";
 import { ThemeCycle, ThemeMenuOptions } from "./theme-controls";
 
 export const navLinks = [
   { to: "/", label: "Home" },
   { to: "/our-services", label: "Our Services" },
   { to: "/business-valuation-calculator", label: "Business Valuation Calculator" },
-  { to: "/global-presence", label: "Global Presence" },
   { to: "/about", label: "About Us" },
   { to: "/contact", label: "Contact Us" },
 ] as const;
@@ -126,12 +124,6 @@ export function SiteFooter() {
               <li><a href={`mailto:${COMPANY.email}`} className="flex items-start gap-3 break-all hover:text-primary"><Mail className="mt-0.5 size-4 shrink-0 text-primary" />{COMPANY.email}</a></li>
             </ul>
           </div>
-          <nav aria-label="Global market links" className="footer-markets">
-            <h3 className="text-sm uppercase tracking-wider text-accent-foreground">Global Markets</h3>
-            <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-ink-foreground/75 sm:mt-5 sm:gap-y-3">
-              {countries.map((country) => <li key={country.slug}><Link to="/global-presence/$market" params={{ market: country.slug }} className="transition-colors hover:text-primary">{country.name}</Link></li>)}
-            </ul>
-          </nav>
         </div>
       </div>
       <div className="border-t border-border">

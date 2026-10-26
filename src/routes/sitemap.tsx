@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LegalPage } from "@/frontend/features/legal/legal-page";
 import { publicPages } from "@/frontend/content/site-pages";
-import { countries } from "@/frontend/features/global-presence/content";
 import { investors } from "@/frontend/features/investors/data";
 import { mentors, team } from "@/frontend/features/people/data";
 
@@ -24,8 +23,6 @@ function SitemapPage() {
     <LegalPage title="Sitemap">
       <h2>Pages</h2>
       <ul>{publicPages.map((p) => <li key={p.path}><a href={p.path}>{p.label}</a></li>)}</ul>
-      <h2>Global markets</h2>
-      <ul>{countries.map((c) => <li key={c.slug}><Link to="/global-presence/$market" params={{ market: c.slug }}>{c.name}</Link></li>)}</ul>
       <h2>Our Investors</h2>
       <ul>{investors.map((i) => <li key={i.slug}><Link to="/our-investors/$slug" params={{ slug: i.slug }}>{i.name}</Link></li>)}</ul>
       <h2>Our Mentors</h2>
