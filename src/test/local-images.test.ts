@@ -1,4 +1,3 @@
-// @vitest-environment node
 import { describe, expect, it } from "vitest";
 import { resolve } from "node:path";
 import { imageMap } from "../../tooling/local-images";
