@@ -69,4 +69,4 @@
 - [x] Hide whole Global Presence section (footer Global Markets column, nav link, /global-presence page, 8 country pages, sitemap entries, home/about/manufacturers/scale links) from live site via GLOBAL_PRESENCE_LIVE=false in src/frontend/lib/hidden-pages.ts; still visible in preview; 49 tests pass; browser-verified no remaining links.
 - [x] Confirmed all 155 media-library images are valid optimized WebP (0 corrupt); already synced to git repo.
 - [ ] Publish only after user confirms all pages complete (per user instruction).
-- [ ] Make all 155 repository image backups accessible on localhost, including the 17 older extras; optimize and verify them.
+- [x] Make all 155 repository image backups accessible on localhost, including the 17 older extras; optimize and verify them (283 image URLs checked against local bytes, zero failures; 8 focused tests pass).
