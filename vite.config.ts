@@ -5,12 +5,7 @@
 //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-
-// Local (non-sandbox) dev: proxy Lovable CDN asset URLs so images load on localhost.
-const isSandbox = Boolean(process.env["LOVABLE_PREVIEW_HOST"]);
-const assetHost =
-  process.env["LOVABLE_ASSET_HOST"] ||
-  "https://id-preview--d7e5f9f7-b1d4-4b3d-b2e9-50f3f9e6784b.lovable.app";
+import { localImages } from "./tooling/local-images";
 
 export default defineConfig({
   tanstackStart: {
@@ -18,13 +13,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
-  vite: isSandbox
-    ? {}
-    : {
-        server: {
-          proxy: {
-            "/__l5e": { target: assetHost, changeOrigin: true, secure: true },
-          },
-        },
-      },
+  vite: {
+    plugins: [localImages()],
+  },
 });
