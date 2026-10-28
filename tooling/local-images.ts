@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, existsSync, createReadStream } from "node:fs";
+import { readdirSync, readFileSync, existsSync, createReadStream, statSync } from "node:fs";
 import { resolve, relative, sep } from "node:path";
 import type { Plugin } from "vite";
 
@@ -27,7 +27,8 @@ export function imageMap(root: string): Map<string, string> {
     for (const pointer of filesIn(resolve(root, source))) {
       if (!pointer.endsWith(".asset.json")) continue;
       const asset = JSON.parse(readFileSync(pointer, "utf8")) as { url?: string };
-      const sourcePath = relative(resolve(root, source), pointer).replace(/\.asset\.json$/, "");
+      // Normalize to forward slashes so the mirror lookup works on Windows too.
+      const sourcePath = relative(resolve(root, source), pointer).split(sep).join("/").replace(/\.asset\.json$/, "");
       const mirror = resolve(library, source === "src" ? "" : "public", sourcePath.replace(/\.[^.]+$/, ".webp"));
       if (asset.url && existsSync(mirror)) images.set(asset.url, mirror);
     }
@@ -49,6 +50,7 @@ export function localImages(): Plugin {
         if (!file) return next();
         response.setHeader("Content-Type", contentTypes[file.split(".").pop() ?? ""] ?? "application/octet-stream");
         response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Content-Length", String(statSync(file).size));
         if (request.method === "HEAD") return response.end();
         const stream = createReadStream(file);
         stream.on("error", () => { response.statusCode = 500; response.end(); });
