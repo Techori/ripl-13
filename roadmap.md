@@ -70,3 +70,7 @@
 - [x] Confirmed all 155 media-library images are valid optimized WebP (0 corrupt); already synced to git repo.
 - [ ] Publish only after user confirms all pages complete (per user instruction).
 - [x] Make all 155 repository image backups accessible on localhost, including the 17 older extras; optimize and verify them (283 image URLs checked against local bytes, zero failures; 8 focused tests pass).
+
+## 2026-10-28 image location and Git sync
+- [ ] Move all 155 optimized images into public/website-images and make site image references use the same static URLs in development and production; verify logos and themes.
+- [ ] Explain latest local commit evidence and Git sync recovery; provider connection status requires the user's Git settings card.
