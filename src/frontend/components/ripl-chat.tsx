@@ -35,7 +35,7 @@ export function RiplChat() {
         aria-label="Chat with RIPL Assistant"
         className="chat-launch"
       >
-        <img src={logo.url} alt="" width={26} height={26} />
+        <img src={logo.url} alt="" width={26} height={26} onError={(event) => { const img = event.currentTarget; if (img.dataset["fallback"]) return; img.dataset["fallback"] = "1"; img.src = "/media-library/assets/ri-brand-mark.webp"; }} />
         Ask RIPL
       </Button>
     );
@@ -49,7 +49,7 @@ export function RiplChat() {
       }}
     >
       <header className="chat-header">
-        <img src={logo.url} alt="RIPL" width={36} height={36} />
+        <img src={logo.url} alt="RIPL" width={36} height={36} onError={(event) => { const img = event.currentTarget; if (img.dataset["fallback"]) return; img.dataset["fallback"] = "1"; img.src = "/media-library/assets/ri-brand-mark.webp"; }} />
         <div className="min-w-0 flex-1">
           <h2>RIPL Assistant</h2>
           <p>Rishishwar Industry</p>

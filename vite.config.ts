@@ -15,5 +15,19 @@ export default defineConfig({
   },
   vite: {
     plugins: [localImages()],
+    server: {
+      // Local machines have no LOVABLE_PREVIEW_HOST, so proxy any CDN asset URL the
+      // localImages() plugin does not already serve from media-library/.
+      ...(process.env["LOVABLE_PREVIEW_HOST"]
+        ? {}
+        : {
+            proxy: {
+              "/__l5e": {
+                target: "https://rishishwar-retail-rally.lovable.app",
+                changeOrigin: true,
+              },
+            },
+          }),
+    },
   },
 });
