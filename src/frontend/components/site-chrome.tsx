@@ -31,7 +31,7 @@ export function SiteHeader() {
     <header className={`site-header sticky top-0 z-50 border-b border-border backdrop-blur-xl ${isSeasonal(theme) ? "site-header-seasonal" : ""}`}>
       <div className="page-shell grid h-[72px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 sm:flex sm:justify-between sm:gap-6">
         <Link to="/" aria-label="Rishishwar Industry home" className="min-w-0 sm:shrink-0" onClick={() => setOpen(false)}>
-          <img src={theme === "light" || theme === "navratri" ? headerLogo.url : headerDarkLogo.url} alt="Rishishwar Industry" width={789} height={214} decoding="async" className="header-logo" onError={(event) => { const img = event.currentTarget; if (img.dataset.fallback) return; img.dataset.fallback = "1"; img.src = theme === "light" || theme === "navratri" ? "/media-library/assets/header-wordmark.webp" : "/media-library/assets/header-wordmark-dark.webp"; }} />
+          <img src={theme === "light" || theme === "navratri" ? headerLogo.url : headerDarkLogo.url} alt="Rishishwar Industry" width={789} height={214} decoding="async" className="header-logo" onError={(event) => { const img = event.currentTarget; if (img.dataset["fallback"]) return; img.dataset["fallback"] = "1"; img.src = theme === "light" || theme === "navratri" ? "/media-library/assets/header-wordmark.webp" : "/media-library/assets/header-wordmark-dark.webp"; }} />
         </Link>
         <nav aria-label="Primary navigation" className="hidden items-center gap-4 2xl:flex">
           {navLinks.map((link) => {
@@ -67,7 +67,7 @@ export function SiteFooter() {
     <footer className="site-footer border-t border-border bg-ink text-ink-foreground">
       <div className="footer-layout page-shell grid grid-cols-2 gap-x-4 gap-y-6 py-7 sm:gap-x-6 sm:gap-y-10 sm:py-16 lg:grid-cols-3 xl:grid-cols-6">
         <div className="footer-brand col-span-2 lg:col-span-1">
-          <img src={footerLogo.url} alt="RiPL — Rishishwar Industry Private Limited" width={866} height={288} decoding="async" loading="lazy" className="footer-logo" onError={(event) => { const img = event.currentTarget; if (img.dataset.fallback) return; img.dataset.fallback = "1"; img.src = "/media-library/assets/footer-logo.webp"; }} />
+          <img src={footerLogo.url} alt="RiPL — Rishishwar Industry Private Limited" width={866} height={288} decoding="async" loading="lazy" className="footer-logo" onError={(event) => { const img = event.currentTarget; if (img.dataset["fallback"]) return; img.dataset["fallback"] = "1"; img.src = "/media-library/assets/footer-logo.webp"; }} />
 
           <p className="footer-description mt-3 max-w-sm text-sm leading-6 text-ink-foreground/75 sm:mt-5 sm:leading-7">FMCG manufacturers ko retail networks, reliable partners aur global markets se jodne wala business growth platform.</p>
           <p className="footer-reach mt-3 flex items-center gap-2 font-display text-[10px] font-semibold uppercase tracking-widest text-primary sm:mt-6"><Globe2 className="size-4" /> Domestic · International</p>
