@@ -1,8 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SiteFooter, SiteHeader } from "@/frontend/components/site-chrome";
-import { StartupPageContent } from "@/frontend/features/fund-your-startup/page";
+import { blockRemovedOffering } from "@/frontend/lib/removed-offerings";
+
 export const Route = createFileRoute("/fund-your-startup")({
-  head: () => ({ links: [{ rel: "canonical", href: "/fund-your-startup" }], meta: [{ title: "Fund Your Startup — Ideas to Impact | Rishishwar Industry" }, { name: "description", content: "Turn bold ideas into growing businesses with startup funding guidance, expert mentorship, strategic support and nationwide market connections." }, { property: "og:title", content: "Fund Your Startup — Rishishwar Industry" }, { property: "og:description", content: "Funding, mentorship and strategic support to help visionary founders move from idea to impact." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
-  component: FundingPage,
+  beforeLoad: blockRemovedOffering,
+  head: () => ({ meta: [
+    { title: "Page Unavailable — Rishishwar Industry" },
+    { name: "description", content: "This page is no longer available. Visit Rishishwar Industry for retail partnerships and distribution support." },
+    { property: "og:title", content: "Page Unavailable — Rishishwar Industry" },
+    { property: "og:description", content: "Explore retail partnerships and distribution support with Rishishwar Industry." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
+    { name: "robots", content: "noindex, nofollow" },
+  ] }),
 });
-function FundingPage() { return <div className="min-h-screen bg-background"><SiteHeader /><StartupPageContent /><SiteFooter /></div>; }

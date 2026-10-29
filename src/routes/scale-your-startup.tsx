@@ -1,8 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SiteFooter, SiteHeader } from "@/frontend/components/site-chrome";
-import { ScaleStartupPageContent } from "@/frontend/features/scale-your-startup/page";
-const description = "Scale faster, build smarter and grow stronger with RIPL: startup growth strategy, funding pathways, sales support, technology, mentorship and market access across India and 8 countries.";
+import { blockRemovedOffering } from "@/frontend/lib/removed-offerings";
+
 export const Route = createFileRoute("/scale-your-startup")({
-  head: () => ({ links: [{ rel: "canonical", href: "/scale-your-startup" }], meta: [{ title: "Scale Your Startup — Rishishwar Industry" }, { name: "description", content: description }, { property: "og:title", content: "Scale Your Startup — Rishishwar Industry" }, { property: "og:description", content: description }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
-  component: () => <div className="min-h-screen bg-background"><SiteHeader /><ScaleStartupPageContent /><SiteFooter /></div>,
+  beforeLoad: blockRemovedOffering,
+  head: () => ({ meta: [
+    { title: "Page Unavailable — Rishishwar Industry" },
+    { name: "description", content: "This page is no longer available. Visit Rishishwar Industry for retail partnerships and distribution support." },
+    { property: "og:title", content: "Page Unavailable — Rishishwar Industry" },
+    { property: "og:description", content: "Explore retail partnerships and distribution support with Rishishwar Industry." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
+    { name: "robots", content: "noindex, nofollow" },
+  ] }),
 });
