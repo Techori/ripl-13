@@ -76,5 +76,5 @@
 - [ ] Explain latest local commit evidence and Git sync recovery; provider connection status requires the user's Git settings card.
 
 ## 2026-10-29 remove startup offerings
-- [ ] Remove startup/investment navigation, pages, home promotions, chatbot mentions and sitemap entries; verify former pages unavailable.
+- [x] Remove startup/investment navigation, pages, home promotions, chatbot mentions and sitemap entries; former six pages and valuation report return 404; footer, FAQ, sitemap and both legal languages browser-verified without runtime errors.
 - Programme video, grant headline and Zoho field tasks above are cancelled by removal of the programme from the website.
