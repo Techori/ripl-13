@@ -20,21 +20,14 @@ describe("imported site navigation and themes", () => {
     expect(resolveTheme("unknown")).toBe("sharad");
     expect(resolveTheme("navratri")).toBe("navratri");
   });
-  it("lists all new family and startup pages but not Products", () => {
+  it("lists family pages but excludes removed offerings", () => {
     const paths = publicPages.map(page => page.path);
     expect(paths).not.toContain("/products");
     for (const path of ["/our-investors", "/our-mentors", "/our-team"]) expect(paths).toContain(path);
-    for (const path of ["/fund-your-startup", "/startup-with-ripl", "/scale-your-startup"]) expect(paths).toContain(path);
+    for (const path of ["/funding-programme", "/summit-2026", "/fund-your-startup", "/startup-with-ripl", "/business-valuation-calculator", "/scale-your-startup"]) expect(paths).not.toContain(path);
   });
   it("keeps all existing family pages publicly unlocked", () => {
     expect(HIDDEN_PAGES_LIVE).toBe(true);
     expect(() => lockHiddenPage()).not.toThrow();
-  });
-  it("uses the agreed page titles", () => {
-    const labels = Object.fromEntries(publicPages.map(page => [page.path, page.label]));
-    expect(labels["/fund-your-startup"]).toBe("Fund Your Startup");
-    expect(labels["/startup-with-ripl"]).toBe("Startup with RIPL");
-    expect(labels["/business-valuation-calculator"]).toBe("Business Valuation Calculator");
-    expect(labels["/scale-your-startup"]).toBe("Scale Your Startup");
   });
 });

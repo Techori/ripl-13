@@ -18,7 +18,6 @@ import { ThemeCycle, ThemeMenuOptions } from "./theme-controls";
 export const navLinks = [
   { to: "/", label: "Home" },
   { to: "/our-services", label: "Our Services" },
-  { to: "/business-valuation-calculator", label: "Business Valuation Calculator" },
   { to: "/about", label: "About Us" },
   { to: "/contact", label: "Contact Us" },
 ] as const;
@@ -42,7 +41,6 @@ export function SiteHeader() {
         </nav>
         <div className="flex shrink-0 items-center gap-2">
           <ThemeCycle />
-          <Button asChild size="sm" className="px-2 text-[9px] sm:px-3 sm:text-xs"><Link to="/summit-2026" onClick={() => setOpen(false)}>Startup Summit 2026</Link></Button>
           <Button asChild size="sm" variant="outline" className="hidden lg:inline-flex"><Link to="/partner-with-us">Partner With Us</Link></Button>
           <Button variant="outline" size="icon" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((value) => !value)} className="border-ink-foreground/25 text-ink-foreground 2xl:hidden">
             {open ? <X /> : <Menu />}
@@ -65,7 +63,7 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer border-t border-border bg-ink text-ink-foreground">
-      <div className="footer-layout page-shell grid grid-cols-2 gap-x-4 gap-y-6 py-7 sm:gap-x-6 sm:gap-y-10 sm:py-16 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="footer-layout page-shell grid grid-cols-2 gap-x-4 gap-y-6 py-7 sm:gap-x-6 sm:gap-y-10 sm:py-16 lg:grid-cols-3 xl:grid-cols-5">
         <div className="footer-brand col-span-2 lg:col-span-1">
           <img src={footerLogo.url} alt="RiPL — Rishishwar Industry Private Limited" width={866} height={288} decoding="async" loading="lazy" className="footer-logo" onError={(event) => { const img = event.currentTarget; if (img.dataset["fallback"]) return; img.dataset["fallback"] = "1"; img.src = "/media-library/assets/footer-logo.webp"; }} />
 
@@ -77,7 +75,7 @@ export function SiteFooter() {
 
             <h3 className="text-sm uppercase tracking-wider text-accent-foreground">Company</h3>
             <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-ink-foreground/75 sm:mt-5 sm:gap-y-3 md:block md:space-y-3">
-              {navLinks.filter((link) => link.to !== "/business-valuation-calculator").map((link) => <li key={link.to}><Link to={link.to} className="transition-colors hover:text-primary">{link.label}</Link></li>)}
+              {navLinks.map((link) => <li key={link.to}><Link to={link.to} className="transition-colors hover:text-primary">{link.label}</Link></li>)}
               <li><Link to="/faq" className="transition-colors hover:text-primary">FAQ</Link></li>
               <li><Link to="/payment" className="transition-colors hover:text-primary">Payment Details</Link></li>
             </ul>
@@ -104,17 +102,6 @@ export function SiteFooter() {
             <li><Link to="/our-team" className="hover:text-primary">Our Team</Link></li>
             <li><Button asChild size="sm" variant="outline" className="h-auto w-[76px] border-primary px-3 py-1 text-inherit font-semibold text-primary hover:bg-primary hover:text-primary-foreground"><Link to="/verification">Verify</Link></Button></li>
             <li className="footer-login"><Button asChild size="sm" variant="outline" className="h-auto w-[76px] border-primary px-3 py-1 text-inherit font-semibold text-primary hover:bg-primary hover:text-primary-foreground"><Link to="/auth">Login</Link></Button></li>
-          </ul>
-        </nav>
-        <nav aria-label="Startups and Investments links" className="footer-startups col-span-1">
-          <h3 className="text-sm uppercase tracking-wider text-accent-foreground">Startups and Investments</h3>
-          <ul className="mt-3 grid gap-3 text-sm text-ink-foreground/75 sm:mt-5">
-            <li><Link to="/funding-programme" className="hover:text-primary">Funding Programme</Link></li>
-            <li><Link to="/summit-2026" className="hover:text-primary">Startup Summit 2026</Link></li>
-            <li><Link to="/fund-your-startup" className="hover:text-primary">Fund Your Startup</Link></li>
-            <li><Link to="/startup-with-ripl" className="hover:text-primary">Startup with RIPL</Link></li>
-            <li><Link to="/business-valuation-calculator" className="hover:text-primary">Business Valuation Calculator</Link></li>
-            <li><Link to="/scale-your-startup" className="hover:text-primary">Scale Your Startup</Link></li>
           </ul>
         </nav>
         <div className="footer-contact-markets col-span-2 flex flex-col gap-6 sm:gap-10 lg:col-span-1">

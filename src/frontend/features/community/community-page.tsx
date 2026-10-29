@@ -26,7 +26,7 @@ export function CommunityPage({ title, description, kind }: CommunityPageProps) 
     <main>
       <section className="community-cover dark-surface">
         <img src={cover.url} alt="Business partners discussing market growth" fetchPriority="high" />
-        <div className="page-shell"><span className="royal-label">{family ? "Our Family" : "Startups and Investments"}</span><h1 className="mt-5">{title}</h1><p>{description}</p></div>
+        <div className="page-shell"><span className="royal-label">{family ? "Our Family" : "Business Partnerships"}</span><h1 className="mt-5">{title}</h1><p>{description}</p></div>
       </section>
       <section className="page-shell community-body">
         {family ? <>
@@ -36,7 +36,7 @@ export function CommunityPage({ title, description, kind }: CommunityPageProps) 
         </> : <>
           <h2 className="text-3xl">{kind === "scale" ? "Your Next Stage of Growth" : "From Idea to Market"}</h2>
           <div className="community-steps">{stages.map(({ icon: Icon, title: heading, text }) => <article key={heading}><Icon /><h3>{heading}</h3><p>{text}</p></article>)}</div>
-          <div className="flex flex-wrap gap-3 mb-12"><Button asChild><Link to="/business-valuation-calculator">Business Valuation Calculator<ArrowRight /></Link></Button><Button asChild variant="outline"><Link to="/fund-your-startup">Explore Funding</Link></Button></div>
+          <div className="flex flex-wrap gap-3 mb-12"><Button asChild><Link to="/contact">Contact Us<ArrowRight /></Link></Button></div>
           <h2 className="text-2xl mb-6">Tell Us About Your Startup</h2>
           <EmailForm fields={contactFields} subject={title} intro="Startup partnership enquiry" submitLabel="Submit Enquiry" />
           <p className="mt-6 text-sm text-muted-foreground">Support and funding are subject to business assessment, eligibility and partner approval.</p>

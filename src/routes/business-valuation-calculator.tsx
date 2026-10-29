@@ -1,28 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ValuationCalculator } from "@/frontend/features/valuation/valuation-calculator";
-import { SiteFooter, SiteHeader } from "@/frontend/components/site-chrome";
+import { blockRemovedOffering } from "@/frontend/lib/removed-offerings";
 
 export const Route = createFileRoute("/business-valuation-calculator")({
-  head: () => ({
-    links: [{ rel: "canonical", href: "/business-valuation-calculator" }, { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" }],
-    meta: [
-      { title: "Business Valuation Calculator — Value, Funding & Equity | Rishishwar Industry" },
-      { name: "description", content: "Free business valuation calculator for Indian manufacturers and startups. Estimate valuation, funding readiness, funding range and equity dilution." },
-      { property: "og:title", content: "Business Valuation Calculator | Rishishwar Industry" },
-      { property: "og:description", content: "Know your business value, estimate funding and equity with revenue, EBITDA, DCF and asset-based methods." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: ValuationPage,
+  beforeLoad: blockRemovedOffering,
+  head: () => ({ meta: [
+    { title: "Page Unavailable — Rishishwar Industry" },
+    { name: "description", content: "This page is no longer available. Visit Rishishwar Industry for retail partnerships and distribution support." },
+    { property: "og:title", content: "Page Unavailable — Rishishwar Industry" },
+    { property: "og:description", content: "Explore retail partnerships and distribution support with Rishishwar Industry." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
+    { name: "robots", content: "noindex, nofollow" },
+  ] }),
 });
-
-function ValuationPage() {
-  return (
-    <div className="min-h-screen bg-background">
-      <SiteHeader />
-      <div className="valuation-page"><ValuationCalculator /></div>
-      <SiteFooter />
-    </div>
-  );
-}
