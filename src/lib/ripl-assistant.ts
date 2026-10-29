@@ -7,7 +7,7 @@ const find = (phrase: string) => faqs.find(f => f.q.includes(phrase))?.a ?? "Ple
 export function answerQuestion(text: string): string {
   const t = text.toLowerCase().normalize("NFKC");
   if (/calculat|कैलकु|गणना|हिसाब|estimate|कितना.*किराया|किराया.*कितना|rent.*total|total.*rent|rent.*\d|\d.*rent/.test(t)) return "Chatbot में calculation उपलब्ध नहीं है। Final rent और commercial terms की पुष्टि के लिए sales@rishishwarindustry.in से संपर्क करें। Published rates, refund, onboarding या revenue share के बारे में पूछ सकते हैं।";
-  if (/funding|programme|program|grant|startup|pitch|investor|फंडिंग|अनुदान/.test(t)) return find("Startup Funding Programme क्या") + "\n\n" + find("प्रक्रिया और fee");
+  if (/summit|programme|program|grant|startup|prototype|valuation|स्टार्टअप|अनुदान|सम्मिट/.test(t)) return "इस विषय की जानकारी वेबसाइट पर उपलब्ध नहीं है। अन्य व्यावसायिक जानकारी के लिए sales@rishishwarindustry.in से संपर्क करें।";
   if (/theme|थीम|dark|navratri|नवरात्रि/.test(t)) return find("theme कैसे");
   if (/refund|रिफ़?ंड|वापसी/.test(t)) return find("रिफ़ंड नीति");
   if (/onboard|ऑनबोर्ड|शुरू करने|getting started|start.*process/.test(t)) return find("शुरू करने की प्रक्रिया");

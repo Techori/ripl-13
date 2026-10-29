@@ -2,12 +2,13 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { SiteHeader, SiteFooter } from "@/frontend/components/site-chrome";
+import { withoutRemovedOfferings } from "@/frontend/lib/removed-offerings";
 
 type Lang = "en" | "hi";
 
 export function BilingualLegal({ title, hiTitle, en, hi }: { title: string; hiTitle: string; en: string; hi?: string }) {
   const [lang, setLang] = useState<Lang>("en");
-  const body = lang === "hi" && hi ? hi : en;
+  const body = withoutRemovedOfferings(lang === "hi" && hi ? hi : en);
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />

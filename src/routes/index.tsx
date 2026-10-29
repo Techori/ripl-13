@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
   loader: () => getSiteShareImage(),
   head: ({loaderData}) => ({ links: [{ rel: "canonical", href: "/" }], meta: [
     { title: "Rishishwar Industry — FMCG Business Growth & Market Expansion" },
-    { name: "description", content: "Grow your FMCG business with Rishishwar Industry: retail partnerships, startup support, funding assistance and market expansion across India and global markets." },
+    { name: "description", content: "Grow your FMCG business with Rishishwar Industry: retail partnerships, distribution support and market expansion across India." },
     { property: "og:title", content: "Rishishwar Industry — FMCG Business Growth & Market Expansion" },
     { property: "og:description", content: `FMCG market access, retail partnerships and business growth support across ${totalStoreFigure} stores, ${districtFigure} districts and 8 countries.` },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },

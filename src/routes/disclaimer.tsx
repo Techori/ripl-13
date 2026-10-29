@@ -7,9 +7,9 @@ export const Route = createFileRoute("/disclaimer")({
   head: () => ({ links: [{ rel: "canonical", href: "/disclaimer" }],
     meta: [
       { title: "Disclaimer — Rishishwar Industry Pvt. Ltd." },
-      { name: "description", content: "Important notes on funding, valuation estimates, rent estimates and global market information on the RIPL website." },
+      { name: "description", content: "Important notes on business services, rent estimates, website information and commercial responsibilities on the RIPL website." },
       { property: "og:title", content: "Disclaimer — Rishishwar Industry" },
-      { property: "og:description", content: "Important notes on funding, valuation estimates, rent estimates and global market information on the RIPL website." },
+      { property: "og:description", content: "Important notes on business services, rent estimates, website information and commercial responsibilities on the RIPL website." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

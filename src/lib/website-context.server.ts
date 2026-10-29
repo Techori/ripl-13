@@ -14,7 +14,6 @@ export const publicPages = [
   "/store-list",
   "/register-your-store",
   "/partner-with-us",
-  "/business-valuation-calculator",
   "/global-presence/usa",
   "/global-presence/canada",
 ];
