@@ -13,7 +13,6 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { RiplChat } from "@/frontend/components/ripl-chat";
-import { FundingPopup } from "@/frontend/components/funding-popup";
 import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
@@ -189,7 +188,6 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <FundingPopup />
       <RiplChat />
       <Toaster richColors />
       <AuthSync />
