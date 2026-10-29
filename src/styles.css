@@ -1156,7 +1156,7 @@ html.navratri main .bg-ink { --ink: var(--festival-text); --ink-foreground: var(
 }
 html .site-footer .footer-logo { background: transparent; padding: 0; }
 @media (max-width: 767px) {
-  .footer-layout { grid-template-areas: "brand brand" "partnerships company" "family family" "startups startups" "markets markets" "contact contact"; gap: 16px 20px; padding-block: 20px; }
+  .footer-layout { grid-template-areas: "brand brand" "partnerships company" "family family" "contact contact"; gap: 16px 20px; padding-block: 20px; }
   .footer-brand { grid-area: brand; display: grid; grid-template-columns: auto minmax(0,1fr); column-gap: .2cm; align-items: center; }
   html .site-footer .footer-logo { width: auto; height: 50px; max-width: 100%; }
   .footer-brand .footer-description { margin: 0; font-size: 12px; line-height: 1.4; }
@@ -1228,13 +1228,13 @@ html, body { overflow-x: clip; }
 .footer-family ul, .footer-startups ul { line-height: 1.6; }
 @media (width >= 64rem) {
   .footer-partnerships ul, .footer-company ul, .footer-markets ul { grid-template-columns: 1fr; }
-  .footer-layout { grid-template-areas: "brand company partnerships" "family startups markets" "contact startups markets"; grid-template-rows: auto auto 1fr; }
+  .footer-layout { grid-template-areas: "brand company partnerships" "family contact contact"; grid-template-rows: auto auto; }
   .footer-contact-markets { display: contents; }
   .footer-brand { grid-area: brand; }.footer-company { grid-area: company; }.footer-partnerships { grid-area: partnerships; }
   .footer-family { grid-area: family; }.footer-startups { grid-area: startups; }.footer-markets { grid-area: markets; }.footer-contact { grid-area: contact; min-width: 0; }
 }
 @media (width >= 80rem) {
-  .footer-layout { grid-template-areas: "brand company partnerships family startups markets" "brand company partnerships contact startups markets"; grid-template-rows: auto 1fr; row-gap: 28px; }
+  .footer-layout { grid-template-areas: "brand company partnerships family contact"; grid-template-rows: auto; row-gap: 28px; }
 }
 @media (width < 48rem) {
   .footer-family { grid-area: family; }

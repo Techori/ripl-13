@@ -17,6 +17,7 @@
 - Preserve original IDs when importing future user records; verified identity mapping must control access, never client-submitted roles.
 - Keep programme calculation rules in a browser-safe module with concrete unit tests so registration terms remain consistent.
 - Removed startup offerings have no public route or root promotion; retain only internal historical records and browser-safe calculation rules so removing public access never destroys stored data.
+- Retired offering URLs use unconditional not-found guards in both preview and production; legal presentation excludes retired programme clauses while retaining the original source documents for historical records.
 - Keep summit registration presentation separate from the retained internal application form; external registration replacements must preserve the existing form for later reuse.
 - Keep team authentication on Cloud Auth with password sign-in and email+password signup (no email OTP or sign-in links); new accounts need admin approval; password reset uses a public recovery-link page, because emailed sign-in links proved unreliable and Cloud stores password hashes.
 - Grant the first Super Admin role only after the fixed owner email is verified server-side, because client-supplied identity or roles must never authorize access.
