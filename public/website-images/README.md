@@ -4,4 +4,6 @@ All 155 repository images, including current website images, favicons and 17 old
 
 The website uses `/website-images/<relative-path>` in development and production. The build plugin resolves existing asset-pointer imports and direct image imports to these static files, preserving their original metadata. No preview-host proxy is needed.
 
-Example: `/website-images/frontend/assets/hero-bg.webp` opens the older hero copy. Keep the relative paths when adding or replacing images; all theme choices remain unchanged. Latest validation: 155 files, zero corrupt images, 144 WebP files made smaller, total approximately 13 MiB.
+Example: `/website-images/frontend/assets/hero-bg.webp` opens the older hero copy. Keep the relative paths when adding or replacing images; all theme choices remain unchanged.
+
+Latest optimization: all 155 images inspected, 112 reduced further, total 12,875,007 bytes (12.28 MiB). Existing dimensions and transparency were preserved. Logos, wordmarks, brand marks and posters were excluded from further lossy compression; photographic changes were accepted only with a structural similarity score of at least 0.98 against the previous repository image. Already smaller files and the multi-size favicon were retained.
