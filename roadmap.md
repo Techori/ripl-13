@@ -81,3 +81,6 @@
 ## 2026-10-29 remove startup offerings
 - [x] Remove startup/investment navigation, pages, home promotions, chatbot mentions and sitemap entries; former six pages and valuation report return 404; footer, FAQ, sitemap and both legal languages browser-verified without runtime errors.
 - Programme video, grant headline and Zoho field tasks above are cancelled by removal of the programme from the website.
+
+## 2026-10-30 image optimization
+- [x] Inspect all 155 website images and reduce 112 further without changing dimensions or transparency; protect brand imagery from lossy recompression. Total 12.28 MiB, 5.51% smaller; all 155 static URLs match repository bytes, no broken home images, 3 image tests pass, build OK. Not published.
