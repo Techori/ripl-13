@@ -84,3 +84,5 @@
 
 ## 2026-10-30 image optimization
 - [x] Inspect all 155 website images and reduce 112 further without changing dimensions or transparency; protect brand imagery from lossy recompression. Total 12.28 MiB, 5.51% smaller; all 155 static URLs match repository bytes, no broken home images, 3 image tests pass, build OK. Not published.
+- [x] Recheck all 155 images and attempt lossless optimization; no smaller equivalents found, so quality preserved. Preview header/footer/chat logos load and all static URLs match repository bytes; 3 image tests pass.
+- [ ] Deploy updated image library after owner's publish approval: published header-wordmark-dark.webp and ri-brand-mark.webp URLs return 404, while preview serves them correctly.
