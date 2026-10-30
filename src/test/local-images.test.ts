@@ -8,18 +8,18 @@ describe("repository image access on localhost", () => {
   const root = resolve(import.meta.dirname, "../..");
   const images = imageMap(root);
   it("exposes all 155 backups, including the 17 older extras", () => {
-    expect([...images.keys()].filter((key) => key.startsWith("/media-library/"))).toHaveLength(155);
-    expect(images.get("/media-library/frontend/assets/hero-bg.webp")).toBe(resolve(root, "media-library/frontend/assets/hero-bg.webp"));
-    expect(images.get("/media-library/frontend/assets/advertising/kirana-storefronts.webp")).toBe(resolve(root, "media-library/frontend/assets/advertising/kirana-storefronts.webp"));
+    expect([...images.keys()].filter((key) => key.startsWith("/website-images/"))).toHaveLength(155);
+    expect(images.get("/website-images/frontend/assets/hero-bg.webp")).toBe(resolve(root, "public/website-images/frontend/assets/hero-bg.webp"));
+    expect(images.get("/website-images/frontend/assets/advertising/kirana-storefronts.webp")).toBe(resolve(root, "public/website-images/frontend/assets/advertising/kirana-storefronts.webp"));
   });
   it("resolves current CDN image URLs to repository copies", () => {
-    expect(images.get(header.url)).toBe(resolve(root, "media-library/assets/header-logo.webp"));
-    expect(images.get(hero.url)).toBe(resolve(root, "media-library/frontend/assets/hero-bg.img.webp"));
+    expect(images.get(header.url)).toBe(resolve(root, "public/website-images/assets/header-logo.webp"));
+    expect(images.get(hero.url)).toBe(resolve(root, "public/website-images/frontend/assets/hero-bg.img.webp"));
     expect([...images.keys()].filter((key) => key.startsWith("/__l5e/assets-v1/"))).toHaveLength(128);
   });
   it("never exposes source files or paths outside the library", () => {
-    expect(images.has("/media-library/README.md")).toBe(false);
-    expect(images.has("/media-library/../../.env")).toBe(false);
-    expect(images.has("/media-library/../vite.config.ts")).toBe(false);
+    expect(images.has("/website-images/README.md")).toBe(false);
+    expect(images.has("/website-images/../../.env")).toBe(false);
+    expect(images.has("/website-images/../vite.config.ts")).toBe(false);
   });
 });
