@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, existsSync, createReadStream, statSync } from "node:fs";
+import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { resolve, relative, sep } from "node:path";
 import type { Plugin } from "vite";
 
@@ -16,12 +16,12 @@ function filesIn(directory: string): string[] {
 }
 
 export function imageMap(root: string): Map<string, string> {
-  const library = resolve(root, "media-library");
+  const library = resolve(root, "public/website-images");
   const images = new Map<string, string>();
   for (const file of filesIn(library)) {
     const extension = file.split(".").pop() ?? "";
     if (!contentTypes[extension]) continue;
-    images.set(`/media-library/${relative(library, file).split(sep).join("/")}`, file);
+    images.set(`/website-images/${relative(library, file).split(sep).join("/")}`, file);
   }
   for (const source of ["src", "public"]) {
     for (const pointer of filesIn(resolve(root, source))) {
@@ -36,26 +36,31 @@ export function imageMap(root: string): Map<string, string> {
   return images;
 }
 
-/** Build-tool only: no filesystem code is imported by app or Worker modules. */
+/** Build-tool only: rendered URLs are identical in development and production. */
 export function localImages(): Plugin {
+  let root = "";
+  const publicUrl = (file: string) => `/website-images/${relative(resolve(root, "public/website-images"), file).split(sep).join("/")}`;
   return {
     name: "repository-local-images",
     enforce: "pre",
-    configureServer(server) {
-      const images = imageMap(server.config.root);
-      server.middlewares.use((request, response, next) => {
-        if (request.method !== "GET" && request.method !== "HEAD") return next();
-        const pathname = new URL(request.url ?? "/", "http://localhost").pathname;
-        const file = images.get(pathname);
-        if (!file) return next();
-        response.setHeader("Content-Type", contentTypes[file.split(".").pop() ?? ""] ?? "application/octet-stream");
-        response.setHeader("Cache-Control", "no-cache");
-        response.setHeader("Content-Length", String(statSync(file).size));
-        if (request.method === "HEAD") return response.end();
-        const stream = createReadStream(file);
-        stream.on("error", () => { response.statusCode = 500; response.end(); });
-        stream.pipe(response);
-      });
+    configResolved(config) { root = config.root; },
+    transform(code, id) {
+      if (!id.split("?")[0]?.endsWith(".asset.json")) return;
+      const pointer = id.split("?")[0];
+      if (!pointer || !existsSync(pointer)) return;
+      const asset = JSON.parse(readFileSync(pointer, "utf8")) as { url?: string };
+      const file = asset.url ? imageMap(root).get(asset.url) : undefined;
+      if (!file) throw new Error(`Missing repository image copy for ${pointer}`);
+      // Leave immutable CDN metadata in the source; only change the built URL.
+      const json = JSON.stringify({ ...asset, url: publicUrl(file) });
+      return { code: json, map: null };
+    },
+    load(id) {
+      const file = id.split("?")[0];
+      if (!file || !file.startsWith(resolve(root, "src") + sep) || !/\.(webp|png|jpe?g)$/i.test(file)) return;
+      const mirror = resolve(root, "public/website-images", relative(resolve(root, "src"), file).replace(/\.[^.]+$/, ".webp"));
+      if (!existsSync(mirror)) throw new Error(`Missing repository image copy for ${file}`);
+      return `export default ${JSON.stringify(publicUrl(mirror))};`;
     },
   };
 }
