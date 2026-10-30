@@ -72,11 +72,11 @@
 - [x] Make all 155 repository image backups accessible on localhost, including the 17 older extras; optimize and verify them (283 image URLs checked against local bytes, zero failures; 8 focused tests pass).
 
 ## 2026-10-28 image location and Git sync
-- [ ] Move all 155 optimized images into public/website-images and make site image references use the same static URLs in development and production; verify logos and themes.
-- [ ] Explain latest local commit evidence and Git sync recovery; provider connection status requires the user's Git settings card.
+- [x] Move all 155 optimized images into public/website-images and make site image references use the same static URLs in development and production; all 155 URLs and four theme logos browser-verified.
+- [ ] Git provider sync confirmation: local changes are committed automatically, but remote status is accessible only through the user's Git settings card; use Re-check there and share any reported error.
 
 ## 2026-10-29 image optimization
-- [ ] Optimize every repository image without increasing file size; verify all static URLs and theme logos before Git sync handoff.
+- [x] Optimize every repository image without increasing file size: 155 files validated, 144 made smaller, approximately 13 MiB total; all 54 tests pass, four themes have no broken images or runtime errors. Website not published.
 
 ## 2026-10-29 remove startup offerings
 - [x] Remove startup/investment navigation, pages, home promotions, chatbot mentions and sitemap entries; former six pages and valuation report return 404; footer, FAQ, sitemap and both legal languages browser-verified without runtime errors.
