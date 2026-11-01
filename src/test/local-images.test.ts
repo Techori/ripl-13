@@ -7,8 +7,8 @@ import hero from "../frontend/assets/hero-bg.img.webp.asset.json";
 describe("repository image access on localhost", () => {
   const root = resolve(import.meta.dirname, "../..");
   const images = imageMap(root);
-  it("exposes all 155 backups, including the 17 older extras", () => {
-    expect([...images.keys()].filter((key) => key.startsWith("/website-images/"))).toHaveLength(155);
+  it("exposes all 155 backups and two Diwali images, including the 17 older extras", () => {
+    expect([...images.keys()].filter((key) => key.startsWith("/website-images/"))).toHaveLength(157);
     expect(images.get("/website-images/frontend/assets/hero-bg.webp")).toBe(resolve(root, "public/website-images/frontend/assets/hero-bg.webp"));
     expect(images.get("/website-images/frontend/assets/advertising/kirana-storefronts.webp")).toBe(resolve(root, "public/website-images/frontend/assets/advertising/kirana-storefronts.webp"));
   });

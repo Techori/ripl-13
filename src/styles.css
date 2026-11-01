@@ -968,7 +968,7 @@ textarea.valuation-input { height: 72px; resize: vertical; line-height: 16px; }
   --header-glass: color-mix(in oklch, var(--header-surface) 60%, transparent);
   --header-text: var(--foreground);
 }
-html.navratri, html:not(.dark):not(.light):not(.moonlight):not(.bome):not(.sharad) {
+html.navratri, html:not(.dark):not(.light):not(.moonlight):not(.bome):not(.sharad):not(.diwali) {
   color-scheme: light;
   --background: var(--festival-cream); --foreground: var(--festival-text);
   --card: oklch(0.995 0.01 85); --card-foreground: var(--foreground);
@@ -1654,3 +1654,89 @@ html .site-footer { --primary: var(--site-primary); }
 /* Smooth feel: gentle transitions on interactive elements and images */
 a, button, [role="button"], .card, img { transition-property: color, background-color, border-color, box-shadow, opacity, transform; transition-duration: .25s; transition-timing-function: cubic-bezier(.22,.61,.36,1); }
 html { -webkit-tap-highlight-color: transparent; }
+
+/* Diwali: ruby, ivory and gold, balanced with teal service accents. */
+html.diwali {
+  color-scheme: dark;
+  --background: oklch(0.19 0.045 345); --foreground: oklch(0.97 0.012 85);
+  --card: oklch(0.24 0.05 345); --card-foreground: var(--foreground);
+  --popover: var(--card); --popover-foreground: var(--foreground);
+  --primary: oklch(0.84 0.13 85); --primary-foreground: oklch(0.19 0.045 345);
+  --secondary: oklch(0.28 0.045 345); --secondary-foreground: var(--foreground);
+  --muted: var(--secondary); --muted-foreground: oklch(0.8 0.025 85);
+  --accent: oklch(0.32 0.055 185); --accent-foreground: oklch(0.88 0.07 175);
+  --border: oklch(0.84 0.09 85 / 25%); --input: oklch(0.84 0.09 85 / 35%); --ring: var(--primary);
+  --ink: oklch(0.14 0.035 345); --ink-foreground: var(--foreground);
+  --festival-cream: var(--background); --festival-text: var(--foreground); --festival-red: var(--primary);
+  --festival-on-red: var(--primary-foreground); --festival-gold: var(--primary); --festival-line: var(--border); --festival-black: var(--ink);
+  --festival-red-band: var(--card);
+  --diwali-photo-veil: linear-gradient(90deg, color-mix(in oklch, var(--ink) 92%, transparent), color-mix(in oklch, var(--ink) 55%, transparent) 45%, transparent 75%);
+  --diwali-mobile-veil: linear-gradient(180deg, color-mix(in oklch, var(--ink) 88%, transparent), color-mix(in oklch, var(--ink) 65%, transparent) 55%, transparent);
+  --diwali-accent: oklch(0.8 0.095 175);
+}
+.diwali-home { color: var(--foreground); letter-spacing: 0; }
+html.diwali .site-header { background: var(--background); }
+html.diwali .site-header-seasonal:has(+ main > .diwali-home) { margin-bottom: 0; }
+.diwali-home .diwali-hero { padding-top: 0; min-height: 0; }
+.diwali-hero::after, .diwali-retail-band::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--diwali-photo-veil); }
+.diwali-hero .festival-backdrop { object-position: center 62%; }
+.diwali-hero-inner { position: relative; z-index: 1; min-height: min(660px, calc(100svh - 150px)); display: flex; align-items: center; }
+.diwali-hero-copy { padding-block: 48px; width: 54%; max-width: 620px; }
+.diwali-eyebrow { display: flex; align-items: center; gap: 10px; color: var(--primary); font-size: 12px; font-weight: 600; letter-spacing: 0; margin-bottom: 16px; }
+.diwali-eyebrow svg { width: 19px; height: 19px; }
+.diwali-home .diwali-hero h1 { font-size: 24px; font-family: var(--font-sans); font-weight: 600; line-height: 1.3; }
+.diwali-headline { font: 54px/1.08 Georgia, serif; margin-top: 18px; }
+.diwali-headline em { color: var(--primary); }
+.diwali-intro { max-width: 430px; margin-top: 22px; font-size: 16px; color: var(--muted-foreground); }
+.diwali-wish { margin-top: 26px; font: italic 16px Georgia, serif; color: var(--primary); animation: diwali-lamplight 4s ease-in-out infinite; }
+@keyframes diwali-lamplight { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+.diwali-home .festival-stats { color: var(--foreground); }
+.diwali-home .festival-stats dt { font-size: 27px; }
+.diwali-home .festival-stats dd { font-size: 13px; }
+.diwali-capabilities { padding-block: 56px; }
+.diwali-home .festival-service { text-align: left; padding: 24px 18px; background: var(--card); }
+.diwali-home .festival-service h3 { margin-inline: 0; max-width: none; }
+.diwali-home .festival-service p { color: var(--muted-foreground); font-size: 14px; }
+.diwali-home .festival-service:nth-child(even) .festival-icon { color: var(--diwali-accent); border-color: var(--diwali-accent); }
+.diwali-service-arrow { width: 18px; height: 18px; color: var(--primary); margin-top: 18px; }
+.diwali-retail-band { position: relative; overflow: hidden; }
+.diwali-retail-band .page-shell { position: relative; z-index: 1; min-height: 440px; display: flex; align-items: center; padding-block: 40px; }
+.diwali-retail-copy { max-width: 480px; }
+.diwali-retail-copy h2 { font-size: 42px; line-height: 1.1; }
+.diwali-retail-copy > p:not(.diwali-eyebrow) { margin: 20px 0; font-size: 17px; }
+.diwali-home .festival-process { padding-block: 56px; }
+.diwali-guide { background: var(--card); border-block: 1px solid var(--border); padding-block: 36px; }
+.diwali-guide .page-shell { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.diwali-guide h2 { font-size: 30px; line-height: 1.2; margin-top: 10px; }
+.diwali-guide p { color: var(--muted-foreground); margin-top: 10px; }
+.diwali-guide svg { color: var(--primary); }
+.diwali-guide .festival-button svg { color: inherit; }
+.diwali-finale { padding-block: 60px; text-align: center; }
+.diwali-finale .diwali-eyebrow { justify-content: center; }
+.diwali-finale h2 { font-size: 42px; line-height: 1.1; }
+.diwali-finale p:not(.diwali-eyebrow) { color: var(--muted-foreground); margin-block: 16px 24px; }
+@media (max-width: 767px) {
+  .diwali-home .diwali-hero { width: auto; zoom: 1; }
+  .diwali-hero-inner { min-height: 620px; align-items: flex-start; }
+  .diwali-hero-copy { width: 100%; padding-block: 34px 200px; }
+  .diwali-hero .festival-backdrop { object-position: 72% center; }
+  .diwali-hero::after { background: var(--diwali-mobile-veil); }
+  .diwali-headline { font-size: 38px; }
+  .diwali-home .diwali-hero h1 { font-size: 20px; }
+  .diwali-intro { font-size: 15px; max-width: 330px; }
+  .diwali-home .festival-hero .festival-actions { gap: 9px; }
+  .diwali-home .festival-hero .festival-actions a { padding-inline: 14px; font-size: 13px; }
+  .diwali-home .festival-stats dl > div { border: 0; }
+  .diwali-home .festival-stats dt { font-size: 23px; }
+  .diwali-capabilities, .diwali-home .festival-process { padding-block: 36px; }
+  .diwali-home .festival-service { padding: 18px 14px; }
+  .diwali-retail-band .page-shell { min-height: 460px; align-items: flex-end; }
+  .diwali-retail-band .festival-backdrop { object-position: 72% center; }
+  .diwali-retail-band::after { background: linear-gradient(0deg, var(--ink), color-mix(in oklch, var(--ink) 70%, transparent) 45%, transparent); }
+  .diwali-retail-copy h2 { font-size: 32px; }
+  .diwali-guide .page-shell { flex-direction: column; align-items: flex-start; }
+  .diwali-guide h2 { font-size: 28px; }
+  .diwali-finale { padding-block: 40px; }
+  .diwali-finale h2 { font-size: 32px; }
+}
+@media (prefers-reduced-motion: reduce) { .diwali-wish { animation: none; } }
