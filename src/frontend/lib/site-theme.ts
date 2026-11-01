@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
-export const siteThemes = ["navratri", "dark", "light", "sharad"] as const;
+export const siteThemes = ["navratri", "dark", "light", "sharad", "diwali"] as const;
 export type SiteTheme = typeof siteThemes[number];
-export const themeLabels: Record<SiteTheme, string> = { navratri: "Navratri Light", dark: "Dark", light: "Light", sharad: "Sharad Purnima" };
+export const themeLabels: Record<SiteTheme, string> = { navratri: "Navratri Light", dark: "Dark", light: "Light", sharad: "Sharad Purnima", diwali: "Diwali" };
 export function resolveTheme(value: string | null): SiteTheme {
   if (value === "navratri-dark" || value === "bome" || value === "moonlight") return "dark";
   return siteThemes.find((theme) => theme === value) ?? "sharad";
 }
 export function isNavratri(theme: SiteTheme) { return theme === "navratri"; }
-export function isSeasonal(theme: SiteTheme) { return theme === "navratri" || theme === "sharad"; }
+export function isSeasonal(theme: SiteTheme) { return theme === "navratri" || theme === "sharad" || theme === "diwali"; }
 export function nextSiteTheme(theme: SiteTheme): SiteTheme {
   return siteThemes[(siteThemes.indexOf(theme) + 1) % siteThemes.length] ?? "sharad";
 }

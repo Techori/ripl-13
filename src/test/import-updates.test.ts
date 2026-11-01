@@ -4,15 +4,17 @@ import { publicPages } from "@/frontend/content/site-pages";
 import { HIDDEN_PAGES_LIVE, lockHiddenPage } from "@/frontend/lib/hidden-pages";
 
 describe("imported site navigation and themes", () => {
-  it("offers four themes while recovering removed saved selections", () => {
-    expect(siteThemes).toEqual(["navratri", "dark", "light", "sharad"]);
+  it("offers Diwali alongside all existing themes while recovering removed selections", () => {
+    expect(siteThemes).toEqual(["navratri", "dark", "light", "sharad", "diwali"]);
     expect(resolveTheme("navratri-dark")).toBe("dark");
     expect(resolveTheme("bome")).toBe("dark");
     expect(resolveTheme("moonlight")).toBe("dark");
     expect(nextSiteTheme("navratri")).toBe("dark");
     expect(nextSiteTheme("dark")).toBe("light");
     expect(nextSiteTheme("light")).toBe("sharad");
-    expect(nextSiteTheme("sharad")).toBe("navratri");
+    expect(nextSiteTheme("sharad")).toBe("diwali");
+    expect(nextSiteTheme("diwali")).toBe("navratri");
+    expect(resolveTheme("diwali")).toBe("diwali");
     expect(isNavratri("dark")).toBe(false);
   });
   it("defaults new visitors and unknown selections to Sharad Purnima", () => {
