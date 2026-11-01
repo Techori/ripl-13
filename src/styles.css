@@ -1716,6 +1716,7 @@ html.diwali .site-header-seasonal:has(+ main > .diwali-home) { margin-bottom: 0;
 .diwali-finale h2 { font-size: 42px; line-height: 1.1; }
 .diwali-finale p:not(.diwali-eyebrow) { color: var(--muted-foreground); margin-block: 16px 24px; }
 @media (max-width: 767px) {
+  .diwali-home .diwali-hero { width: auto; zoom: 1; }
   .diwali-hero-inner { min-height: 620px; align-items: flex-start; }
   .diwali-hero-copy { width: 100%; padding-block: 34px 200px; }
   .diwali-hero .festival-backdrop { object-position: 72% center; }
@@ -1723,6 +1724,8 @@ html.diwali .site-header-seasonal:has(+ main > .diwali-home) { margin-bottom: 0;
   .diwali-headline { font-size: 38px; }
   .diwali-home .diwali-hero h1 { font-size: 20px; }
   .diwali-intro { font-size: 15px; max-width: 330px; }
+  .diwali-home .festival-hero .festival-actions { gap: 9px; }
+  .diwali-home .festival-hero .festival-actions a { padding-inline: 14px; font-size: 13px; }
   .diwali-home .festival-stats dl > div { border: 0; }
   .diwali-home .festival-stats dt { font-size: 23px; }
   .diwali-capabilities, .diwali-home .festival-process { padding-block: 36px; }
