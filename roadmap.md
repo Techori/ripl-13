@@ -88,4 +88,4 @@
 - [ ] Deploy updated image library after owner's publish approval: published header-wordmark-dark.webp and ri-brand-mark.webp URLs return 404, while preview serves them correctly.
 
 ## 2026-11-01 Diwali theme
-- [ ] Add optional Diwali theme with optimized festive images, matching shared page colours and existing store figures; verify theme selection, pages and mobile layout. Preserve the current default and do not publish.
+- [x] Add optional Diwali theme with two optimized festive images, matching shared page colours and live store figures; theme menu, service navigation, AI guide and desktop/mobile layouts browser-verified without broken images, overflow or runtime errors. Current Sharad default preserved; not published.
