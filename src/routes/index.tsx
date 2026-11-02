@@ -4,10 +4,8 @@ import { CapabilitiesSection, ProcessSection, CtaSection } from "@/frontend/feat
 import { HomeNetwork } from "@/frontend/features/home/network";
 import { ServiceGuide } from "@/frontend/features/home/service-guide";
 import { districtFigure, totalStoreFigure } from "@/frontend/data/retail-network";
-import { NavratriHome } from "@/frontend/features/home/navratri";
-import { SharadHome } from "@/frontend/features/home/sharad";
 import { DiwaliHome } from "@/frontend/features/home/diwali";
-import { isNavratri, useSiteTheme } from "@/frontend/lib/site-theme";
+import { useSiteTheme } from "@/frontend/lib/site-theme";
 import { getSiteShareImage } from "@/lib/site-appearance.functions";
 
 export const Route = createFileRoute("/")({
@@ -28,7 +26,7 @@ function HomePage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main>
-        {theme === "diwali" ? <DiwaliHome /> : theme === "sharad" ? <SharadHome /> : isNavratri(theme) ? <NavratriHome /> : <>
+        {theme === "diwali" ? <DiwaliHome /> : <>
         <HomeNetwork />
         <CapabilitiesSection />
         <ServiceGuide />

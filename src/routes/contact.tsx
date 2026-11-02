@@ -4,7 +4,6 @@ import { SiteHeader, SiteFooter } from "@/frontend/components/site-chrome";
 import { EmailForm } from "@/frontend/components/forms/email-form";
 import { EnquiryChecklist } from "@/frontend/components/forms/enquiry-checklist";
 import { contactFields } from "@/frontend/content/forms";
-import { SeasonalPageBanner } from "@/frontend/components/seasonal-page-banner";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({ links: [{ rel: "canonical", href: "/contact" }],
@@ -54,7 +53,6 @@ function ContactPage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main>
-        <SeasonalPageBanner title="Let’s Grow Together This Navratri." />
         <section className="cinematic-section bg-ink text-ink-foreground">
           <div className="page-shell">
             <p className="royal-label">

@@ -4,23 +4,25 @@ import { publicPages } from "@/frontend/content/site-pages";
 import { HIDDEN_PAGES_LIVE, lockHiddenPage } from "@/frontend/lib/hidden-pages";
 
 describe("imported site navigation and themes", () => {
-  it("offers Diwali alongside all existing themes while recovering removed selections", () => {
-    expect(siteThemes).toEqual(["navratri", "dark", "light", "sharad", "diwali"]);
+  it("offers only Diwali, Dark and Light and cycles through them", () => {
+    expect(siteThemes).toEqual(["diwali", "dark", "light"]);
     expect(resolveTheme("navratri-dark")).toBe("dark");
     expect(resolveTheme("bome")).toBe("dark");
     expect(resolveTheme("moonlight")).toBe("dark");
-    expect(nextSiteTheme("navratri")).toBe("dark");
+    expect(nextSiteTheme("diwali")).toBe("dark");
     expect(nextSiteTheme("dark")).toBe("light");
-    expect(nextSiteTheme("light")).toBe("sharad");
-    expect(nextSiteTheme("sharad")).toBe("diwali");
-    expect(nextSiteTheme("diwali")).toBe("navratri");
+    expect(nextSiteTheme("light")).toBe("diwali");
     expect(resolveTheme("diwali")).toBe("diwali");
     expect(isNavratri("dark")).toBe(false);
   });
-  it("defaults new visitors and unknown selections to Sharad Purnima", () => {
-    expect(resolveTheme(null)).toBe("sharad");
-    expect(resolveTheme("unknown")).toBe("sharad");
-    expect(resolveTheme("navratri")).toBe("navratri");
+  it("defaults new visitors and unknown selections to Diwali", () => {
+    expect(resolveTheme(null)).toBe("diwali");
+    expect(resolveTheme("unknown")).toBe("diwali");
+  });
+  it("migrates retired themes without enabling seasonal content", () => {
+    expect(resolveTheme("navratri")).toBe("light");
+    expect(resolveTheme("sharad")).toBe("diwali");
+    expect(isNavratri(resolveTheme("navratri"))).toBe(false);
   });
   it("lists family pages but excludes removed offerings", () => {
     const paths = publicPages.map(page => page.path);

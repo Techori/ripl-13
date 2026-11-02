@@ -30,7 +30,7 @@ export function SiteHeader() {
     <header className={`site-header sticky top-0 z-50 border-b border-border backdrop-blur-xl ${isSeasonal(theme) ? "site-header-seasonal" : ""}`}>
       <div className="page-shell grid h-[72px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 sm:flex sm:justify-between sm:gap-6">
         <Link to="/" aria-label="Rishishwar Industry home" className="min-w-0 sm:shrink-0" onClick={() => setOpen(false)}>
-          <img src={theme === "light" || theme === "navratri" ? headerLogo.url : headerDarkLogo.url} alt="Rishishwar Industry" width={789} height={214} decoding="async" className="header-logo" onError={(event) => { const img = event.currentTarget; if (img.dataset["fallback"]) return; img.dataset["fallback"] = "1"; img.src = theme === "light" || theme === "navratri" ? "/website-images/assets/header-wordmark.webp" : "/website-images/assets/header-wordmark-dark.webp"; }} />
+          <img src={theme === "light" ? headerLogo.url : headerDarkLogo.url} alt="Rishishwar Industry" width={789} height={214} decoding="async" className="header-logo" onError={(event) => { const img = event.currentTarget; if (img.dataset["fallback"]) return; img.dataset["fallback"] = "1"; img.src = theme === "light" ? "/website-images/assets/header-wordmark.webp" : "/website-images/assets/header-wordmark-dark.webp"; }} />
         </Link>
         <nav aria-label="Primary navigation" className="hidden items-center gap-4 2xl:flex">
           {navLinks.map((link) => {
