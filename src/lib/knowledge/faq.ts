@@ -27,7 +27,7 @@ const ratesGroup: FaqGroup = {
 const themeGroup: FaqGroup = {
   title: "Website",
   items: [
-    { q: "Website का theme कैसे बदलें?", a: "Website हर बार Navratri theme में खुलती है। Desktop पर header के theme button से, और mobile पर menu खोलकर Navratri Light, Dark या Light चुनें।" },
+    { q: "Website का theme कैसे बदलें?", a: "नए visitors के लिए Diwali default theme है। Desktop पर header के theme button से, और mobile पर menu खोलकर Diwali, Dark या Light चुनें। चुनी हुई theme इस browsing session में बनी रहती है।" },
   ],
 };
 
