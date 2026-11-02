@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import { Globe2, Mail, Menu, X } from "lucide-react";
+import { Globe2, Mail, Menu, Sparkles, X } from "lucide-react";
 import headerLogoSrcAsset from "@/assets/header-wordmark.webp.asset.json";
 const headerLogoSrc = headerLogoSrcAsset.url;
 const headerLogo = { url: headerLogoSrc };
@@ -47,6 +47,7 @@ export function SiteHeader() {
           </Button>
         </div>
       </div>
+      {theme === "diwali" && pathname !== "/" && <div className="diwali-site-greeting"><Sparkles aria-hidden="true" /><p lang="hi">RIPL की ओर से दीपावली की हार्दिक शुभकामनाएँ</p><Sparkles aria-hidden="true" /></div>}
       {open && (
         <nav aria-label="Mobile navigation" className="max-h-[calc(100svh-72px)] overflow-y-auto border-t border-border bg-background px-4 py-5 shadow-2xl 2xl:hidden">
           <div className="mx-auto grid max-w-7xl gap-1">
@@ -61,9 +62,10 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const theme = useSiteTheme();
   return (
     <footer className="site-footer border-t border-border bg-ink text-ink-foreground">
-      <div className="footer-layout page-shell grid grid-cols-2 gap-x-4 gap-y-6 py-7 sm:gap-x-6 sm:gap-y-10 sm:py-16 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="footer-layout page-shell">
         <div className="footer-brand col-span-2 lg:col-span-1">
           <img src={footerLogo.url} alt="RiPL — Rishishwar Industry Private Limited" width={866} height={288} decoding="async" loading="lazy" className="footer-logo" onError={(event) => { const img = event.currentTarget; if (img.dataset["fallback"]) return; img.dataset["fallback"] = "1"; img.src = "/website-images/assets/footer-logo.webp"; }} />
 
@@ -113,7 +115,8 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-      <div className="border-t border-border">
+      {theme === "diwali" && <div className="footer-diwali-wish page-shell"><Sparkles aria-hidden="true" /><p lang="hi">आप सभी को RIPL की ओर से दीपावली की हार्दिक शुभकामनाएँ</p></div>}
+      <div className="footer-bottom border-t border-border">
         <div className="page-shell flex flex-col gap-2 py-5 text-xs text-ink-foreground/65 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Rishishwar Industry. All rights reserved.</p>
           <nav aria-label="Legal links" className="flex flex-wrap gap-x-5 gap-y-2">

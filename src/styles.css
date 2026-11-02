@@ -1636,7 +1636,7 @@ html .site-footer { --primary: var(--site-primary); }
 @media (max-width: 767px) {
   .festival-process h2, .festival-capabilities h2, .festival-growth h2 { white-space: normal; overflow-wrap: anywhere; font-size: clamp(17px, 5.4vw, 24px); }
   .festival-process .page-shell, .festival-process h2 { max-width: 100%; }
-  .footer-layout { grid-template-columns: repeat(3, minmax(0,1fr)) !important; grid-template-areas: "brand brand brand" "company partnerships family" "startups startups startups" "markets markets markets" "contact contact contact" !important; gap: 12px 10px !important; padding-block: 16px !important; }
+  .footer-layout { grid-template-columns: repeat(3, minmax(0,1fr)) !important; grid-template-areas: "brand brand brand" "company partnerships family" "contact contact contact" !important; gap: 16px 12px !important; padding-block: 24px !important; }
   .footer-family { grid-area: family; } .footer-startups { grid-area: startups; }
   .site-footer h3 { font-size: 11px; margin-bottom: 2px; }
   .site-footer ul { font-size: 11px; line-height: 1.25 !important; margin-top: 4px !important; gap: 0 !important; }
@@ -1741,3 +1741,59 @@ html.diwali .site-header-seasonal:has(+ main > .diwali-home) { margin-bottom: 0;
   .diwali-finale h2 { font-size: 32px; }
 }
 @media (prefers-reduced-motion: reduce) { .diwali-wish { animation: none; } }
+
+/* One explicit footer grid at every width; no retired-section placeholders. */
+.site-footer .footer-layout { display: grid; grid-template-columns: 1.5fr 1fr 1.3fr 1fr; grid-template-areas: "brand company partnerships family" "brand contact contact contact"; gap: 24px 32px; padding-block: 40px; align-items: start; }
+.site-footer .footer-brand { grid-area: brand; min-width: 0; }
+.site-footer .footer-company { grid-area: company; }
+.site-footer .footer-partnerships { grid-area: partnerships; }
+.site-footer .footer-family { grid-area: family; }
+.site-footer .footer-contact-markets { display: contents; }
+.site-footer .footer-contact { grid-area: contact; min-width: 0; padding-top: 16px; border-top: 1px solid var(--border); }
+.site-footer .footer-company ul, .site-footer .footer-partnerships ul, .site-footer .footer-family ul { display: grid; grid-template-columns: minmax(0,1fr); row-gap: 6px; margin-top: 12px; font-size: 13px; line-height: 1.4; }
+.site-footer li { margin-block: 0; }
+.site-footer a { overflow-wrap: anywhere; }
+.site-footer .footer-description { margin-top: 12px; font-size: 13px; line-height: 1.6; }
+.site-footer .footer-reach { margin-top: 14px; }
+html .site-footer .footer-logo { width: 230px; height: 76px; max-width: 100%; object-fit: contain; object-position: left center; }
+.site-footer .footer-contact ul { margin-top: 8px; font-size: 13px; }
+.footer-diwali-wish { display: flex; align-items: center; justify-content: center; gap: 12px; padding-block: 16px; border-top: 1px solid var(--border); color: var(--primary); text-align: center; font-size: 14px; }
+.footer-diwali-wish svg { width: 20px; height: 20px; flex-shrink: 0; }
+.site-footer .footer-bottom > div { padding-block: 16px; }
+.diwali-hindi-greeting { font-family: var(--font-sans); font-size: 36px; font-weight: 600; line-height: 1.45; }
+.diwali-hindi-greeting em { font-style: normal; }
+.diwali-hero-copy { width: 48%; }
+.diwali-site-greeting { display: flex; justify-content: center; align-items: center; gap: 12px; padding: 9px 16px; color: var(--primary); border-top: 1px solid var(--border); background: var(--card); font-size: 12px; line-height: 1.5; }
+.diwali-site-greeting svg { width: 15px; height: 15px; flex-shrink: 0; }
+html.diwali { --diwali-gold-shadow: 0 5px 24px color-mix(in oklch, var(--primary) 12%, transparent); --diwali-deep-surface: oklch(0.16 0.035 345); }
+html.diwali .site-header { border-bottom: 1px solid var(--border); }
+html.diwali main :is(.royal-label, .community-cover h1, .diwali-retail-copy h2) { color: var(--primary); }
+html.diwali main a[data-slot="button"]:hover, html.diwali main button[data-slot="button"]:hover { box-shadow: var(--diwali-gold-shadow); }
+html.diwali .community-cover { background: var(--diwali-deep-surface); }
+.diwali-home .festival-services { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.diwali-home .festival-service { border-top: 2px solid var(--primary); transition: transform .25s, border-color .25s; }
+.diwali-home .festival-service:hover { transform: translateY(-4px); border-color: var(--diwali-accent); }
+.diwali-home .diwali-finale { border-top: 1px solid var(--border); background: var(--card); }
+@media (min-width: 1280px) {
+  .site-footer .footer-layout { grid-template-columns: 1.5fr .85fr 1.1fr .85fr 1.3fr; grid-template-areas: "brand company partnerships family contact"; gap: 28px; }
+  .site-footer .footer-contact { border: 0; padding-top: 0; }
+}
+@media (max-width: 767px) {
+  .site-footer .footer-layout { grid-template-columns: repeat(3,minmax(0,1fr)) !important; grid-template-areas: "brand brand brand" "company partnerships family" "contact contact contact" !important; }
+  .site-footer .footer-brand { display: grid; grid-template-columns: 38% minmax(0,1fr) !important; align-items: center !important; gap: 8px 16px; }
+  html .site-footer .footer-logo { height: 64px !important; width: 100% !important; align-self: center; }
+  .site-footer .footer-description { margin: 0; font-size: 11px; line-height: 1.5; }
+  .site-footer .footer-reach { margin-top: 0; }
+  .site-footer .footer-company ul, .site-footer .footer-partnerships ul, .site-footer .footer-family ul { font-size: 11px; margin-top: 8px !important; gap: 5px !important; line-height: 1.35 !important; }
+  .site-footer h3 { font-size: 11px; }
+  .site-footer .footer-contact { padding-top: 14px; }
+  .site-footer .footer-contact ul { font-size: 12px; }
+  .footer-diwali-wish { font-size: 12px; gap: 8px; }
+  .site-footer .footer-bottom nav { gap: 8px 14px; }
+  .diwali-hindi-greeting { font-size: 28px; line-height: 1.5; }
+  .diwali-hero-copy { width: 100%; }
+  .diwali-home .festival-services { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .diwali-home .festival-service:last-child { grid-column: auto; }
+  .diwali-site-greeting { font-size: 11px; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .diwali-home .festival-service:hover { transform: none; } }
