@@ -11,3 +11,5 @@ Latest optimization: all 155 images inspected, 112 reduced further, total 12,875
 2026-10-30 follow-up: all 155 files decode correctly and their static URLs return the exact repository bytes. Lossless recompression produced no smaller files, so existing optimized images were retained without another quality-reducing pass. Header, footer and chat logos load correctly in the preview. The published site's new header-wordmark and chat-logo static URLs still return 404; deployment of the updated site is required before those URLs are available there.
 
 2026-11-01: added `assets/diwali-hero.webp` and `assets/diwali-retail.webp` (approximately 388 KiB combined), served from this same static library in development and production.
+
+2026-11-02: refreshed both Diwali photos with FMCG retail imagery; the hero retains illuminated Gwalior Fort. Optimized WebP copies remain at the same static URLs.

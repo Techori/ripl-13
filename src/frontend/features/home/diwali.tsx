@@ -17,7 +17,7 @@ export function DiwaliHome() {
   const count = network.filter((row) => (!selection.state || row.state === selection.state) && (!selection.area || row.area === selection.area) && (!selection.district || row.district === selection.district)).reduce((sum, row) => sum + row.stores, 0);
   return <div className="navratri-home diwali-home">
     <section className="festival-hero diwali-hero">
-      <img src={hero} alt="Diwali celebrations at FMCG retail stores with stocked shelves, shopkeepers, rangoli and glowing diyas" className="festival-backdrop" width={1920} height={1024} fetchPriority="high" decoding="async" />
+      <img src={hero} alt="Illuminated Gwalior Fort above festive FMCG retail stores with shopkeepers, rangoli and glowing Diwali diyas" className="festival-backdrop" width={1920} height={1024} fetchPriority="high" decoding="async" />
       <div className="page-shell diwali-hero-inner"><div className="diwali-hero-copy">
         <p className="diwali-eyebrow"><Sparkles aria-hidden="true" /> ॥ शुभ दीपावली ॥</p>
         <h1>Rishishwar Industry</h1>
