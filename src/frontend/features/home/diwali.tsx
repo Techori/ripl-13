@@ -17,14 +17,14 @@ export function DiwaliHome() {
   const count = network.filter((row) => (!selection.state || row.state === selection.state) && (!selection.area || row.area === selection.area) && (!selection.district || row.district === selection.district)).reduce((sum, row) => sum + row.stores, 0);
   return <div className="navratri-home diwali-home">
     <section className="festival-hero diwali-hero">
-      <img src={hero} alt="Gwalior Fort illuminated for Diwali, with glowing diyas and fireworks" className="festival-backdrop" width={1920} height={1024} fetchPriority="high" decoding="async" />
+      <img src={hero} alt="Illuminated Gwalior Fort above festive FMCG retail stores with shopkeepers, rangoli and glowing Diwali diyas" className="festival-backdrop" width={1920} height={1024} fetchPriority="high" decoding="async" />
       <div className="page-shell diwali-hero-inner"><div className="diwali-hero-copy">
         <p className="diwali-eyebrow"><Sparkles aria-hidden="true" /> ॥ शुभ दीपावली ॥</p>
         <h1>Rishishwar Industry</h1>
-        <p className="diwali-headline">Brighter beginnings.<br /><em>Stronger businesses.</em></p>
+        <p className="diwali-headline diwali-hindi-greeting" lang="hi">आप सभी को RIPL की ओर से<br /><em>दीपावली की हार्दिक शुभकामनाएँ</em></p>
         <p className="diwali-intro">Connecting FMCG brands with the retail networks and partnerships that turn ambition into growth.</p>
         <div className="festival-actions"><Button asChild variant="festival" size="lg"><Link to="/manufacturers">For Manufacturers <ArrowRight /></Link></Button><Button asChild variant="festivalOutline" size="lg"><Link to="/our-services">Our Services <ArrowRight /></Link></Button></div>
-        <p className="diwali-wish">May every diya light a new opportunity.</p>
+        <p className="diwali-wish">Lighting up stores. Bringing brands closer.</p>
       </div></div>
     </section>
     <section className="festival-stats"><dl className="page-shell">
@@ -42,6 +42,6 @@ export function DiwaliHome() {
     <section className="festival-process"><div className="page-shell"><p className="diwali-eyebrow">A CLEAR PATH FORWARD</p><h2>The Rishishwar Industry Standard</h2><ol>{steps.map(({ icon: Icon, title, text }, index) => <li key={title}><span className="festival-icon"><Icon /></span><h3>{title}</h3><p>{text}</p>{index < steps.length - 1 && <ArrowRight className="festival-step-arrow" />}</li>)}</ol></div></section>
     <section className="diwali-guide"><div className="page-shell"><div><Sparkles aria-hidden="true" /><h2>Your next move, made clearer.</h2><p>Find the right service for your business with our AI Business Guide.</p></div><Button variant="festival" size="lg" onClick={() => setShowGuide(value => !value)} aria-expanded={showGuide} aria-controls="diwali-guide-form">{showGuide ? "Close Business Guide" : "AI Business Guide"}<ArrowRight /></Button></div></section>
     {showGuide && <div id="diwali-guide-form"><ServiceGuide /></div>}
-    <section className="diwali-finale"><div className="page-shell"><p className="diwali-eyebrow">HAPPY DIWALI · शुभ दीपावली</p><h2>Let's grow brighter, together.</h2><p>Your growth. Our commitment.</p><Button asChild variant="festival" size="lg"><Link to="/partner-with-us">Partner With Us <ArrowRight /></Link></Button></div></section>
+    <section className="diwali-finale"><div className="page-shell"><p className="diwali-eyebrow">HAPPY DIWALI · शुभ दीपावली</p><h2>Let's grow brighter, together.</h2><p lang="hi">RIPL परिवार की ओर से आपके व्यापार में सुख, समृद्धि और नई सफलताओं की शुभकामनाएँ।</p><Button asChild variant="festival" size="lg"><Link to="/partner-with-us">Partner With Us <ArrowRight /></Link></Button></div></section>
   </div>;
 }
