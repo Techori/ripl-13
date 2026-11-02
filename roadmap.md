@@ -89,3 +89,7 @@
 
 ## 2026-11-01 Diwali theme
 - [x] Add optional Diwali theme with two optimized festive images, matching shared page colours and live store figures; theme menu, service navigation, AI guide and desktop/mobile layouts browser-verified without broken images, overflow or runtime errors. Current Sharad default preserved; not published.
+
+## Current theme cleanup
+- [ ] Remove Sharad and Navratri choices and public festival content; retain the old Navratri palette in Light mode without seasonal imagery.
+- [ ] Set Diwali as default, migrate retired saved themes safely, and verify menu and public pages.
