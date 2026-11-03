@@ -1,6 +1,6 @@
 # Website images
 
-All 157 repository images, including current website images, favicons, 17 older extras and two Diwali photos. Photos are optimized WebP, capped at 1920px; smaller originals are preserved rather than increasing file size.
+All 159 repository images, including current website images, favicons, 17 older extras and four Diwali photos. Photos are optimized WebP, capped at 1920px; smaller originals are preserved rather than increasing file size.
 
 The website uses `/website-images/<relative-path>` in development and production. The build plugin resolves existing asset-pointer imports and direct image imports to these static files, preserving their original metadata. No preview-host proxy is needed.
 
@@ -13,3 +13,4 @@ Latest optimization: all 155 images inspected, 112 reduced further, total 12,875
 2026-11-01: added `assets/diwali-hero.webp` and `assets/diwali-retail.webp` (approximately 388 KiB combined), served from this same static library in development and production.
 
 2026-11-02: refreshed both Diwali photos with FMCG retail imagery; the hero retains illuminated Gwalior Fort. Optimized WebP copies remain at the same static URLs.
+2026-11-03: added the supplied festive retail street and southern-state thank-you poster as optimized WebP slideshow images, with immutable asset pointers and matching static copies.

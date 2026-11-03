@@ -1797,3 +1797,30 @@ html.diwali .community-cover { background: var(--diwali-deep-surface); }
   .diwali-site-greeting { font-size: 11px; gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { .diwali-home .festival-service:hover { transform: none; } }
+
+/* Constant hero copy with three independently changing full-bleed images. */
+.diwali-slides { position: absolute; inset: 0; background: var(--ink); }
+.diwali-hero .diwali-slide { opacity: 0; transition: opacity .8s ease; }
+.diwali-hero .diwali-slide.is-active { opacity: 1; }
+.diwali-hero .diwali-slide-poster { width: 56%; left: auto; right: 0; object-fit: contain; object-position: right center; }
+.diwali-poster-active::after { background: linear-gradient(90deg, var(--ink), color-mix(in oklch, var(--ink) 90%, transparent) 37%, transparent 56%); }
+.diwali-home .diwali-hero .diwali-market-headline { font: 48px/1.12 Georgia, serif; font-weight: 500; letter-spacing: 0; }
+.diwali-market-headline em { color: var(--primary); font-style: normal; }
+.diwali-hero-copy { width: 48%; padding-bottom: 70px; }
+.diwali-slide-controls { position: absolute; z-index: 2; right: 24px; bottom: 18px; display: flex; align-items: center; gap: 4px; background: var(--ink); color: var(--foreground); border: 1px solid var(--border); border-radius: 6px; padding: 4px; }
+.diwali-slide-count { min-width: 44px; text-align: center; font-size: 13px; font-variant-numeric: tabular-nums; }
+.diwali-slide-controls button { color: var(--primary); }
+@media (max-width: 1023px) and (min-width: 768px) {
+  .diwali-home .diwali-hero .diwali-market-headline { font-size: 36px; }
+  .diwali-hero-copy { width: 50%; }
+}
+@media (max-width: 767px) {
+  .diwali-home .diwali-hero .diwali-market-headline { font-size: 34px; }
+  .diwali-hero-inner { min-height: 690px; }
+  .diwali-hero-copy { width: 100%; padding-block: 30px 260px; }
+  .diwali-hero .diwali-slide-poster { width: 100%; height: auto; top: auto; bottom: 66px; object-fit: contain; }
+  .diwali-poster-active::after { background: linear-gradient(180deg, var(--ink), var(--ink) 52%, transparent 68%); }
+  .diwali-slide-controls { right: 16px; bottom: 14px; }
+  .diwali-wish { max-width: 340px; font-size: 14px; line-height: 1.6; margin-top: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .diwali-hero .diwali-slide { transition: none; } }

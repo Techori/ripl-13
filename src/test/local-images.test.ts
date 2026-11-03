@@ -7,15 +7,17 @@ import hero from "../frontend/assets/hero-bg.img.webp.asset.json";
 describe("repository image access on localhost", () => {
   const root = resolve(import.meta.dirname, "../..");
   const images = imageMap(root);
-  it("exposes all 155 backups and two Diwali images, including the 17 older extras", () => {
-    expect([...images.keys()].filter((key) => key.startsWith("/website-images/"))).toHaveLength(157);
+  it("exposes all 155 backups and four Diwali images, including the 17 older extras", () => {
+    expect([...images.keys()].filter((key) => key.startsWith("/website-images/"))).toHaveLength(159);
+    expect(images.has("/website-images/assets/diwali-retail-street.webp")).toBe(true);
+    expect(images.has("/website-images/assets/diwali-south-thank-you.webp")).toBe(true);
     expect(images.get("/website-images/frontend/assets/hero-bg.webp")).toBe(resolve(root, "public/website-images/frontend/assets/hero-bg.webp"));
     expect(images.get("/website-images/frontend/assets/advertising/kirana-storefronts.webp")).toBe(resolve(root, "public/website-images/frontend/assets/advertising/kirana-storefronts.webp"));
   });
   it("resolves current CDN image URLs to repository copies", () => {
     expect(images.get(header.url)).toBe(resolve(root, "public/website-images/assets/header-logo.webp"));
     expect(images.get(hero.url)).toBe(resolve(root, "public/website-images/frontend/assets/hero-bg.img.webp"));
-    expect([...images.keys()].filter((key) => key.startsWith("/__l5e/assets-v1/"))).toHaveLength(128);
+    expect([...images.keys()].filter((key) => key.startsWith("/__l5e/assets-v1/"))).toHaveLength(130);
   });
   it("never exposes source files or paths outside the library", () => {
     expect(images.has("/website-images/README.md")).toBe(false);
