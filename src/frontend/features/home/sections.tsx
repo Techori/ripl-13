@@ -3,11 +3,12 @@ import { ArrowRight, Factory, Globe, Handshake, MapPin, Store, Truck, Users } fr
 import heroBgAsset from "@/frontend/assets/hero-bg.webp";
 import handshakeImage from "@/frontend/assets/cta-handshake.jpg";
 import { Button } from "@/frontend/components/ui/button";
-import { storeFigure } from "@/frontend/data/retail-network";
+import type { NetworkRow } from "@/frontend/data/retail-network";
+import { homeStatistics } from "./statistics";
 
 import { services, steps } from "./content";
 
-export function HeroSection({ storeCount, districtCount }: { storeCount: number; districtCount: number }) {
+export function HeroSection({ network }: { network: NetworkRow[] }) {
   return (
     <section className="dark-surface relative overflow-hidden border-b border-border sm:h-[calc(100svh-272px)] sm:min-h-[568px] sm:max-h-[830px]">
       <img src={heroBgAsset} alt="Rishishwar Industry representative inside an FMCG retail store" className="absolute inset-0 size-full object-cover object-[62%_center]" />
@@ -20,7 +21,7 @@ export function HeroSection({ storeCount, districtCount }: { storeCount: number;
           <div className="mt-8 grid gap-3 sm:mt-9 sm:flex sm:flex-wrap sm:gap-4"><Button asChild size="lg" className="w-full sm:w-auto"><Link to="/manufacturers">For Manufacturers <ArrowRight /></Link></Button><Button asChild size="lg" variant="outline" className="w-full border-ink-foreground/30 text-ink-foreground sm:w-auto"><Link to="/our-services">Explore Services</Link></Button></div>
         </div>
         <dl className="mt-10 grid grid-cols-2 border border-border bg-ink/75 backdrop-blur-md sm:absolute sm:bottom-8 sm:right-6 sm:mt-0 sm:w-[520px] sm:grid-cols-4 lg:right-8">
-          {[[storeFigure(storeCount),"Retail Stores"],[String(districtCount),"Districts Covered"],["8","Countries"],["End-to-End","Support"]].map(([v,l]) => <div key={l} className="border-r border-border p-4 last:border-r-0"><dt className="font-display text-xl text-accent-foreground">{v}</dt><dd className="mt-1 text-xs uppercase tracking-wider text-ink-foreground/50">{l}</dd></div>)}
+          {homeStatistics(network).map(({value,label}) => <div key={label} className="min-w-0 border-r border-border p-3 last:border-r-0"><dt className="font-display text-xl text-accent-foreground">{value}</dt><dd className="mt-1 text-xs uppercase text-ink-foreground/50">{label}</dd></div>)}
         </dl>
       </div>
     </section>

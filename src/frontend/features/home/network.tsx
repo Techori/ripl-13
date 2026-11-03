@@ -12,11 +12,10 @@ export function HomeNetwork() {
     (!selection.district || row.district === selection.district),
   );
   const count = matches.reduce((sum, row) => sum + row.stores, 0);
-  const districts = new Set(matches.filter((row) => row.stores > 0).map((row) => `${row.state}:${row.district}`)).size;
 
   return (
     <>
-      <HeroSection storeCount={count} districtCount={districts} />
+      <HeroSection network={retailNetwork} />
       <RetailNetworkIndicator selection={selection} onChange={setSelection} count={count} />
     </>
   );

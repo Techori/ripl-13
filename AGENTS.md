@@ -24,4 +24,5 @@
 - Public store network figures come from the admin-managed store_network table (visible rows with stores > 0); the bundled JSON is only a pre-load fallback, so keep its default hidden-state filter in sync.
 - public/website-images/ is the canonical optimized image library, including older extras. A build-only Vite plugin rewrites imported immutable asset pointers and direct image imports to static /website-images/ URLs in development and production; keep matching copies there when adding images so no Worker filesystem or preview CDN dependency is needed.
 - Seasonal home experiences use dedicated presentation modules and the shared theme registry; reuse the retail-network data source so switching festive themes never changes business figures.
-- Diwali hero slides change imagery independently of shared copy, with touch navigation and pausable rotation; this preserves the message and supports motion accessibility.
+- Diwali hero slides use touch navigation and pausable rotation; image-only slides suppress overlay copy so uploaded poster text stays unobstructed.
+- All home themes use the shared homeStatistics function with the full public network; selector filters change only local results so headline totals stay consistent.
