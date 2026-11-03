@@ -10,9 +10,10 @@ import { RetailNetworkIndicator, type NetworkSelection } from "@/frontend/compon
 import { useRetailNetwork, networkFigures } from "@/frontend/data/retail-network";
 import { services, steps } from "./content";
 import { ServiceGuide } from "./service-guide";
+import { homeStatistics } from "./statistics";
 
 const heroSlides = [
-  { src: hero, alt: "Illuminated Gwalior Fort and festive FMCG retail stores", poster: false },
+  { src: hero, alt: "Illuminated Gwalior Fort with Diwali diyas and fireworks", poster: false },
   { src: retailStreet.url, alt: "Diwali retail street with stocked FMCG stores, lanterns and diyas", poster: false },
   { src: southThankYou.url, alt: "Rishishwar Industry thanks Tamil Nadu, Kerala, Andhra Pradesh, Telangana and Karnataka for their support", poster: true },
 ];
@@ -50,7 +51,7 @@ export function DiwaliHome() {
       onTouchStart={event => { const touch = event.touches[0]; if (touch) touchStart.current = { x: touch.clientX, y: touch.clientY }; }}
       onTouchEnd={event => { const start = touchStart.current; const end = event.changedTouches[0]; touchStart.current = null; if (!start || !end) return; const dx = end.clientX - start.x; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(end.clientY - start.y)) changeSlide(dx < 0 ? 1 : -1); }}>
       <div className="diwali-slides">{heroSlides.map((slide, index) => <img key={slide.src} src={slide.src} alt={slide.alt} aria-hidden={activeSlide !== index} className={`festival-backdrop diwali-slide${slide.poster ? " diwali-slide-poster" : ""}${activeSlide === index ? " is-active" : ""}`} fetchPriority={index === 0 ? "high" : "low"} decoding="async" />)}</div>
-      <div className="page-shell diwali-hero-inner"><div className="diwali-hero-copy">
+      <div className="page-shell diwali-hero-inner"><div className="diwali-hero-copy" hidden={activeSlide === 2}>
         <p className="diwali-eyebrow"><Sparkles aria-hidden="true" /> this Diwali</p>
         <h1 className="diwali-market-headline">We Build Your Markets.<br /><em>You Grow Your Sales.</em></h1>
         <p className="diwali-intro">Rishishwar Industry connects FMCG manufacturers with retail networks, distributors and international opportunities.</p>
@@ -65,10 +66,10 @@ export function DiwaliHome() {
       </div>
     </section>
     <section className="festival-stats"><dl className="page-shell">
-      <div><Store /><div><dt>{storeFigure}</dt><dd>Retail Stores</dd></div></div>
-      <div><Building2 /><div><dt>{districtFigure}</dt><dd>Districts Covered</dd></div></div>
-      <div><Handshake /><div><dt>End-to-End</dt><dd>Business Support</dd></div></div>
-      <div><Sparkles /><div><dt>One Vision</dt><dd>Your Growth</dd></div></div>
+      {homeStatistics(network).map(({ value, label }, index) => {
+        const Icon = [Store, Building2, Handshake, Sparkles][index] ?? Store;
+        return <div key={label}><Icon /><div><dt>{value}</dt><dd>{label}</dd></div></div>;
+      })}
     </dl></section>
     <div className="festival-network"><RetailNetworkIndicator selection={selection} onChange={setSelection} count={count} /></div>
     <section className="festival-capabilities diwali-capabilities"><div className="page-shell">

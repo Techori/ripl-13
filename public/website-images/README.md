@@ -14,3 +14,4 @@ Latest optimization: all 155 images inspected, 112 reduced further, total 12,875
 
 2026-11-02: refreshed both Diwali photos with FMCG retail imagery; the hero retains illuminated Gwalior Fort. Optimized WebP copies remain at the same static URLs.
 2026-11-03: added the supplied festive retail street and southern-state thank-you poster as optimized WebP slideshow images, with immutable asset pointers and matching static copies.
+2026-11-03 follow-up: restored the original Gwalior Fort-only hero and replaced the third-slide poster with the latest upload, preserving readable embedded lettering and the same static image paths.
