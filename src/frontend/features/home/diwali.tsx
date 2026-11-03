@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Building2, Handshake, Sparkles, Store } from "lucide-react";
+import { ArrowRight, Building2, ChevronLeft, ChevronRight, Handshake, Pause, Play, Sparkles, Store } from "lucide-react";
 import hero from "@/assets/diwali-hero.webp";
+import retailStreet from "@/assets/diwali-retail-street.webp.asset.json";
+import southThankYou from "@/assets/diwali-south-thank-you.webp.asset.json";
 import retail from "@/assets/diwali-retail.webp";
 import { Button } from "@/frontend/components/ui/button";
 import { RetailNetworkIndicator, type NetworkSelection } from "@/frontend/components/retail-network-indicator";
@@ -9,23 +11,58 @@ import { useRetailNetwork, networkFigures } from "@/frontend/data/retail-network
 import { services, steps } from "./content";
 import { ServiceGuide } from "./service-guide";
 
+const heroSlides = [
+  { src: hero, alt: "Illuminated Gwalior Fort and festive FMCG retail stores", poster: false },
+  { src: retailStreet.url, alt: "Diwali retail street with stocked FMCG stores, lanterns and diyas", poster: false },
+  { src: southThankYou.url, alt: "Rishishwar Industry thanks Tamil Nadu, Kerala, Andhra Pradesh, Telangana and Karnataka for their support", poster: true },
+];
+
 export function DiwaliHome() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [interacting, setInteracting] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const changeSlide = (offset: number) => setActiveSlide(current => (current + offset + heroSlides.length) % heroSlides.length);
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+  useEffect(() => {
+    if (paused || interacting || reducedMotion) return;
+    const timer = window.setInterval(() => {
+      if (!document.hidden) setActiveSlide(current => (current + 1) % heroSlides.length);
+    }, 6000);
+    return () => window.clearInterval(timer);
+  }, [activeSlide, paused, interacting, reducedMotion]);
   const [selection, setSelection] = useState<NetworkSelection>({ state: "", area: "", district: "" });
   const [showGuide, setShowGuide] = useState(false);
   const network = useRetailNetwork();
   const { storeFigure, districtFigure } = networkFigures(network);
   const count = network.filter((row) => (!selection.state || row.state === selection.state) && (!selection.area || row.area === selection.area) && (!selection.district || row.district === selection.district)).reduce((sum, row) => sum + row.stores, 0);
   return <div className="navratri-home diwali-home">
-    <section className="festival-hero diwali-hero">
-      <img src={hero} alt="Illuminated Gwalior Fort above festive FMCG retail stores with shopkeepers, rangoli and glowing Diwali diyas" className="festival-backdrop" width={1920} height={1024} fetchPriority="high" decoding="async" />
+    <section className={`festival-hero diwali-hero${activeSlide === 2 ? " diwali-poster-active" : ""}`} aria-label="Diwali highlights" aria-roledescription="carousel"
+      onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)}
+      onFocusCapture={() => setInteracting(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }}
+      onTouchStart={event => { const touch = event.touches[0]; if (touch) touchStart.current = { x: touch.clientX, y: touch.clientY }; }}
+      onTouchEnd={event => { const start = touchStart.current; const end = event.changedTouches[0]; touchStart.current = null; if (!start || !end) return; const dx = end.clientX - start.x; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(end.clientY - start.y)) changeSlide(dx < 0 ? 1 : -1); }}>
+      <div className="diwali-slides">{heroSlides.map((slide, index) => <img key={slide.src} src={slide.src} alt={slide.alt} aria-hidden={activeSlide !== index} className={`festival-backdrop diwali-slide${slide.poster ? " diwali-slide-poster" : ""}${activeSlide === index ? " is-active" : ""}`} fetchPriority={index === 0 ? "high" : "low"} decoding="async" />)}</div>
       <div className="page-shell diwali-hero-inner"><div className="diwali-hero-copy">
-        <p className="diwali-eyebrow"><Sparkles aria-hidden="true" /> ॥ शुभ दीपावली ॥</p>
-        <h1>Rishishwar Industry</h1>
-        <p className="diwali-headline diwali-hindi-greeting" lang="hi">आप सभी को RIPL की ओर से<br /><em>दीपावली की हार्दिक शुभकामनाएँ</em></p>
-        <p className="diwali-intro">Connecting FMCG brands with the retail networks and partnerships that turn ambition into growth.</p>
+        <p className="diwali-eyebrow"><Sparkles aria-hidden="true" /> this Diwali</p>
+        <h1 className="diwali-market-headline">We Build Your Markets.<br /><em>You Grow Your Sales.</em></h1>
+        <p className="diwali-intro">Rishishwar Industry connects FMCG manufacturers with retail networks, distributors and international opportunities.</p>
         <div className="festival-actions"><Button asChild variant="festival" size="lg"><Link to="/manufacturers">For Manufacturers <ArrowRight /></Link></Button><Button asChild variant="festivalOutline" size="lg"><Link to="/our-services">Our Services <ArrowRight /></Link></Button></div>
-        <p className="diwali-wish">Lighting up stores. Bringing brands closer.</p>
+        <p className="diwali-wish" lang="hi">आप सभी को RIPL की ओर से दीपावली की हार्दिक शुभकामनाएँ</p>
       </div></div>
+      <div className="diwali-slide-controls" aria-label="Slideshow controls">
+        <Button variant="ghost" size="icon" aria-label="Previous image" title="Previous image" onClick={() => changeSlide(-1)}><ChevronLeft /></Button>
+        <span className="diwali-slide-count" aria-live={paused || interacting || reducedMotion ? "polite" : "off"}>{activeSlide + 1} / {heroSlides.length}</span>
+        <Button variant="ghost" size="icon" aria-label="Next image" title="Next image" onClick={() => changeSlide(1)}><ChevronRight /></Button>
+        <Button variant="ghost" size="icon" aria-label={paused || reducedMotion ? "Play slideshow" : "Pause slideshow"} title={paused || reducedMotion ? "Play slideshow" : "Pause slideshow"} onClick={() => { setPaused(value => !value); if (reducedMotion) setReducedMotion(false); }}>{paused || reducedMotion ? <Play /> : <Pause />}</Button>
+      </div>
     </section>
     <section className="festival-stats"><dl className="page-shell">
       <div><Store /><div><dt>{storeFigure}</dt><dd>Retail Stores</dd></div></div>
