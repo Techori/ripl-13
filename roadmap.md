@@ -91,7 +91,7 @@
 - [x] Add optional Diwali theme with two optimized festive images, matching shared page colours and live store figures; theme menu, service navigation, AI guide and desktop/mobile layouts browser-verified without broken images, overflow or runtime errors. Current Sharad default preserved; not published.
 
 ## Current theme cleanup
-- [ ] Restore the earlier Gwalior Fort-only Diwali photo, replace the third background with the new upload without overlay text, and unify home statistics across every theme.
+- [x] Restore the earlier Gwalior Fort-only Diwali photo, replace the third background with the new upload without overlay text, and unify home statistics across every theme; live figures match in Diwali/Dark/Light, phone swipe works, and five focused tests pass. Not published.
 - [x] Keep the requested Diwali hero copy constant and add the existing image plus both uploaded images as an automatic, swipeable slideshow. Three images load; automatic rotation, next control and phone swipe verified without overflow or runtime errors; image tests pass. Not published.
 - [x] Improve footer alignment and spacing; add RIPL's Hindi Diwali greeting, regenerate retail/FMCG festive home photos and enrich Diwali presentation across public pages. Desktop, tablet and phone checked without overflow, broken images or runtime errors; focused tests pass.
 - [x] Retain recognizable Gwalior Fort in the new Diwali hero alongside FMCG retail stores; optimized image and mobile greeting visually verified. Not published.

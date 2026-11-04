@@ -1820,6 +1820,7 @@ html.diwali .community-cover { background: var(--diwali-deep-surface); }
   .diwali-hero-copy { width: 100%; padding-block: 30px 260px; }
   .diwali-hero .diwali-slide-poster { width: 100%; height: 100%; inset: 0; object-fit: contain; }
   .diwali-poster-active::after { background: none; }
+  .diwali-poster-active .diwali-hero-inner { min-height: 0; aspect-ratio: 1365 / 768; }
   .diwali-slide-controls { right: 16px; bottom: 14px; }
   .diwali-wish { max-width: 340px; font-size: 14px; line-height: 1.6; margin-top: 18px; }
 }
