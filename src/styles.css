@@ -1701,7 +1701,8 @@ html.diwali .site-header-seasonal:has(+ main > .diwali-home) { margin-bottom: 0;
 .diwali-home .festival-service:nth-child(even) .festival-icon { color: var(--diwali-accent); border-color: var(--diwali-accent); }
 .diwali-service-arrow { width: 18px; height: 18px; color: var(--primary); margin-top: 18px; }
 .diwali-retail-band { position: relative; overflow: hidden; }
-.diwali-retail-band .page-shell { position: relative; z-index: 1; min-height: 440px; display: flex; align-items: center; padding-block: 40px; }
+.diwali-retail-band .festival-backdrop { object-position: center 38%; }
+.diwali-retail-band .page-shell { position: relative; z-index: 1; min-height: clamp(460px, 36vw, 640px); display: flex; align-items: center; padding-block: 40px; }
 .diwali-retail-copy { max-width: 480px; }
 .diwali-retail-copy h2 { font-size: 42px; line-height: 1.1; }
 .diwali-retail-copy > p:not(.diwali-eyebrow) { margin: 20px 0; font-size: 17px; }
@@ -1802,9 +1803,11 @@ html.diwali .community-cover { background: var(--diwali-deep-surface); }
 .diwali-slides { position: absolute; inset: 0; background: var(--ink); }
 .diwali-hero .diwali-slide { opacity: 0; transition: opacity .8s ease; }
 .diwali-hero .diwali-slide.is-active { opacity: 1; }
-.diwali-hero .diwali-slide-poster { width: 100%; height: 100%; inset: 0; object-fit: contain; object-position: center; }
+.diwali-hero .diwali-slide-poster { width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: center; }
 .diwali-poster-active::after { background: none; }
 .diwali-home .diwali-hero .diwali-market-headline { font: 48px/1.12 Georgia, serif; font-weight: 500; letter-spacing: 0; }
+.diwali-hero-copy .diwali-eyebrow { font: 500 48px/1.12 Georgia, serif; letter-spacing: 0; margin-bottom: 10px; }
+.diwali-hero-copy .diwali-eyebrow svg { display: none; }
 .diwali-market-headline em { color: var(--primary); font-style: normal; }
 .diwali-hero-copy { width: 48%; padding-bottom: 70px; }
 .diwali-slide-controls { position: absolute; z-index: 2; right: 24px; bottom: 18px; display: flex; align-items: center; gap: 4px; background: var(--ink); color: var(--foreground); border: 1px solid var(--border); border-radius: 6px; padding: 4px; }
