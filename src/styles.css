@@ -1831,7 +1831,7 @@ html.diwali .community-cover { background: var(--diwali-deep-surface); }
   .diwali-hero::after { display: none; }
   .diwali-hero-inner, .diwali-poster-active .diwali-hero-inner { min-height: 0; aspect-ratio: auto; }
   .diwali-hero-copy { padding-block: 24px 28px; }
-  .diwali-hero-copy[hidden] { display: none; }
+  .diwali-hero-copy[hidden] { display: block; }
   .diwali-slide-controls { top: calc(100vw * 9 / 16 - 52px); bottom: auto; right: 10px; }
   .diwali-wish { max-width: 340px; font-size: 14px; line-height: 1.6; margin-top: 18px; }
 }
