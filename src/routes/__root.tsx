@@ -146,8 +146,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="diwali" suppressHydrationWarning>
       <head>
+        {/* Apply the saved theme before first paint so slow mobile loads never show unthemed colours. */}
+        <script dangerouslySetInnerHTML={{ __html: `try{var t=sessionStorage.getItem("rishishwar-theme");var m={"navratri-dark":"dark",bome:"dark",moonlight:"dark",navratri:"light"};t=m[t]||t;if(["diwali","dark","light"].indexOf(t)<0)t="diwali";document.documentElement.className=t}catch(e){}` }} />
         <HeadContent />
       </head>
       <body>
