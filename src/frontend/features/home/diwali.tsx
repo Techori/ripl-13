@@ -51,7 +51,7 @@ export function DiwaliHome() {
       onTouchStart={event => { const touch = event.touches[0]; if (touch) touchStart.current = { x: touch.clientX, y: touch.clientY }; }}
       onTouchEnd={event => { const start = touchStart.current; const end = event.changedTouches[0]; touchStart.current = null; if (!start || !end) return; const dx = end.clientX - start.x; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(end.clientY - start.y)) changeSlide(dx < 0 ? 1 : -1); }}>
       <div className="diwali-slides">{heroSlides.map((slide, index) => <img key={slide.src} src={slide.src} alt={slide.alt} aria-hidden={activeSlide !== index} className={`festival-backdrop diwali-slide${slide.poster ? " diwali-slide-poster" : ""}${activeSlide === index ? " is-active" : ""}`} fetchPriority={index === 0 ? "high" : "low"} decoding="async" />)}</div>
-      <div className="page-shell diwali-hero-inner"><div className="diwali-hero-copy" hidden={activeSlide === 2}>
+      <div className="page-shell diwali-hero-inner"><div className={`diwali-hero-copy${activeSlide === 2 ? " is-poster-slide" : ""}`}>
         <p className="diwali-eyebrow"><Sparkles aria-hidden="true" /> this Diwali</p>
         <h1 className="diwali-market-headline">We Build Your Markets.<br /><em>You Grow Your Sales.</em></h1>
         <p className="diwali-intro">Rishishwar Industry connects FMCG manufacturers with retail networks, distributors and international opportunities.</p>
