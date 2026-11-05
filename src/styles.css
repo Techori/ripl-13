@@ -1824,6 +1824,15 @@ html.diwali .community-cover { background: var(--diwali-deep-surface); }
   .diwali-hero .diwali-slide-poster { width: 100%; height: 100%; inset: 0; object-fit: cover; }
   .diwali-poster-active::after { background: none; }
   .diwali-slide-controls { right: 16px; bottom: 14px; }
+  /* Mobile: images sit in a 16:9 frame at the top; copy follows below on a solid surface. */
+  .diwali-home .diwali-hero { display: flex; flex-direction: column; min-height: 0; background: var(--ink); }
+  .diwali-hero .diwali-slides { position: relative; inset: auto; width: 100%; aspect-ratio: 16 / 9; flex-shrink: 0; overflow: hidden; }
+  .diwali-hero .diwali-slide, .diwali-hero .diwali-slide-poster { object-fit: cover; object-position: center; }
+  .diwali-hero::after { display: none; }
+  .diwali-hero-inner, .diwali-poster-active .diwali-hero-inner { min-height: 0; aspect-ratio: auto; }
+  .diwali-hero-copy { padding-block: 24px 28px; }
+  .diwali-hero-copy[hidden] { display: none; }
+  .diwali-slide-controls { top: calc(100vw * 9 / 16 - 52px); bottom: auto; right: 10px; }
   .diwali-wish { max-width: 340px; font-size: 14px; line-height: 1.6; margin-top: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .diwali-hero .diwali-slide { transition: none; } }
